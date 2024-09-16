@@ -6,14 +6,12 @@ import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 
-import static automation.dev.serverest.api.support.EnvProp.findProperty;
-
 public class BaseTest implements Constants {
     protected static RequestSpecification request;
-    private final String APP_BASE_URL = findProperty("BASE_URL");
 
     @Before
     public void setUp() {
+
         // Configura a base URI diretamente no given()
         RestAssured.baseURI = APP_BASE_URL;
         request = RestAssured.given();

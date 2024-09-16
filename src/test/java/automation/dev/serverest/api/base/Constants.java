@@ -2,7 +2,10 @@ package automation.dev.serverest.api.base;
 
 import io.restassured.http.ContentType;
 
+import static automation.dev.serverest.api.support.EnvProp.findProperty;
+
 public interface Constants {
-    ContentType APP_CONTENT_TYPE = ContentType.JSON;
     Long MAX_TIMEOUT = 3000L;
+    String APP_BASE_URL = findProperty("BASE_URL");
+    ContentType APP_CONTENT_TYPE = ContentType.JSON;
 }

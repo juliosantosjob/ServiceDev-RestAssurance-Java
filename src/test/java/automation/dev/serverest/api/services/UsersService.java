@@ -2,7 +2,7 @@ package automation.dev.serverest.api.services;
 import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
 
-public class Users extends BaseTest {
+public class UsersService extends BaseTest {
 
     /**
      * Fetches the list of registered users from the server.
