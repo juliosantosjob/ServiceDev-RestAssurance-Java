@@ -18,7 +18,7 @@ public class RemoveUsersService extends BaseTest {
      * @return The response from the DELETE request.
      */
 
-    public Response deletUser(String idUser) {
+    public Response deleteUser(String idUser) {
         try {
             return request
                     .header("Content-Type", "application/json")
