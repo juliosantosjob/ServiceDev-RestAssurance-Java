@@ -17,7 +17,7 @@ public class EnvProp {
         }
     }
 
-    public static String findProperty(String key) {
+    public static String findEnv(String key) {
         return properties.getProperty(key);
     }
 }
