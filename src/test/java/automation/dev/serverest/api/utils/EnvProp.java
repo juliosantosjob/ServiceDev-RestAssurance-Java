@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.support;
+package automation.dev.serverest.api.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

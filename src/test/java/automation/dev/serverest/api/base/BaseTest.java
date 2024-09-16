@@ -11,7 +11,6 @@ public class BaseTest implements Constants {
 
     @Before
     public void setUp() {
-
         // Configura a base URI diretamente no given()
         RestAssured.baseURI = APP_BASE_URL;
         request = RestAssured.given();
@@ -25,5 +24,8 @@ public class BaseTest implements Constants {
         ResponseSpecBuilder resBuilder = new ResponseSpecBuilder();
         resBuilder.expectResponseTime(Matchers.lessThan(MAX_TIMEOUT));
         RestAssured.responseSpecification = resBuilder.build();
+
+        // Habilita os logs da chamada caso ocorra algum erro
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 }

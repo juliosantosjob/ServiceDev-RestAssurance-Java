@@ -2,6 +2,10 @@ package automation.dev.serverest.api.services;
 import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
 
+/**
+ * @author Julio C. Santos
+ */
+
 public class UsersService extends BaseTest {
 
     /**
@@ -10,7 +14,7 @@ public class UsersService extends BaseTest {
      * @return Response containing the server's response with the list of users.
      */
 
-    private Response getRegisteredUsers() {
+    public Response getRegisteredUsers() {
         try {
             return request.get("/usuarios");
         } catch (Exception e) {

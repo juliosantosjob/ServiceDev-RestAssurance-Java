@@ -2,7 +2,7 @@ package automation.dev.serverest.api.base;
 
 import io.restassured.http.ContentType;
 
-import static automation.dev.serverest.api.support.EnvProp.findProperty;
+import static automation.dev.serverest.api.utils.EnvProp.findProperty;
 
 public interface Constants {
     Long MAX_TIMEOUT = 3000L;

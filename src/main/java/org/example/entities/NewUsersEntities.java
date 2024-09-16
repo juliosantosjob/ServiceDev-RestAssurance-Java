@@ -1,10 +1,12 @@
-package automation.dev.serverest.api.entities;
+package org.example.entities;
 
 public class NewUsersEntities {
     private String nome;
     private String email;
     private String password;
     private String administrador;
+
+    public NewUsersEntities() {}
 
     public NewUsersEntities(String nome, String email, String password, String administrador) {
         this.nome = nome;

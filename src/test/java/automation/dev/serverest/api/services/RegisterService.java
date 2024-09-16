@@ -1,37 +1,31 @@
 package automation.dev.serverest.api.services;
 
 import automation.dev.serverest.api.base.BaseTest;
-import automation.dev.serverest.api.entities.NewUsersEntities;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.Test;
+
+/**
+ * @author Julio C. Santos
+ */
 
 public class RegisterService extends BaseTest {
+
+    /**
+     * Registers a new user with the API.
+     *
+     * @param newUser The new user object in JSON format.
+     *
+     * @return The HTTP response.
+     */
 
     public Response registerUser(Object newUser) {
         try {
             return request
-                        .contentType(ContentType.JSON)
-                        .body(newUser)
+                    .header("Content-Type", "application/json")
+                    .body(newUser)
                     .when()
-                        .post("/usuarios");
-
+                    .post("/usuarios");
         } catch (Exception e) {
             throw new RuntimeException("Failed to register user", e);
         }
-    }
-
-    @Test
-    public void vamosTestar() {
-        NewUsersEntities newUser = new NewUsersEntities(
-                "João",
-                "test1111223@gmail.com",
-                "ttest12",
-                "false"
-        );
-
-        Response response = registerUser(newUser);
-        response.then()
-                .statusCode(201);
     }
 }
