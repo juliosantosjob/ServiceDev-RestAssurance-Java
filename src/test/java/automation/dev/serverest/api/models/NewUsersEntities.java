@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.entities;
+package automation.dev.serverest.api.models;
 
 public class NewUsersEntities {
     private String nome;

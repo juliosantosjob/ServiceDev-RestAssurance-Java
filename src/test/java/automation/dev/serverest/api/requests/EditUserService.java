@@ -22,8 +22,6 @@ public class EditUserService extends BaseTest {
     public static Response editUser(Object newUser, String idUser) {
         try {
             return RestAssured.given()
-                    .baseUri(APP_BASE_URL)
-                    .header("Content-Type", CONTENT_TYPE)
                     .body(newUser)
                     .when()
                     .put(USERS.concat(idUser));

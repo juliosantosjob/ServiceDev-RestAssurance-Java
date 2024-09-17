@@ -9,8 +9,6 @@
         public static Response login(Object credentials) {
             try {
                 return RestAssured.given()
-                        .baseUri(APP_BASE_URL)
-                        .header("Content-Type", CONTENT_TYPE)
                         .body(credentials)
                         .when()
                         .post(LOGIN);

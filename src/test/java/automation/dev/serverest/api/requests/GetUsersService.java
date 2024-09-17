@@ -18,9 +18,8 @@ public class GetUsersService extends BaseTest {
 
     public static Response getUser() {
         try {
-            return RestAssured.given()
-                    .baseUri(APP_BASE_URL)
-                    .header("Content-Type", CONTENT_TYPE)
+            return RestAssured
+                    .given()
                     .get(USERS);
         } catch (Exception e) {
             throw new RuntimeException("Failed to get users" + e.getMessage());

@@ -20,8 +20,6 @@ public class RegisterUsersService extends BaseTest {
     public static Response registerUser(Object newUser) {
         try {
             return RestAssured.given()
-                    .baseUri(APP_BASE_URL)
-                    .header("Content-Type", CONTENT_TYPE)
                     .body(newUser)
                     .when()
                     .post(USERS);

@@ -2,19 +2,23 @@ package automation.dev.serverest.api.base;
 
 import io.cucumber.java.Before;
 import io.restassured.RestAssured;
+import io.restassured.builder.ResponseSpecBuilder;
+import org.hamcrest.Matchers;
 
-public class BaseTest {
-    // Configs
-    protected static String CONTENT_TYPE = "application/json";
-    protected static Long MAX_TIMEOUT = 3000L;
-
-    // Routes
-    protected static String  APP_BASE_URL =  "https://serverest.dev";
-    protected static String USERS = "/usuarios/";
-    protected static String LOGIN = "/login/";
+public class BaseTest implements Constants {
 
     @Before
-    public void setUp() {
+    public static void setupRestAssured() {
+        RestAssured.baseURI = APP_BASE_URL;
+        RestAssured.requestSpecification = RestAssured.given()
+                .header("Content-Type", CONTENT_TYPE);
+
+        // Define um timeout maximo para a execução de cada chamada
+        ResponseSpecBuilder resBuilder = new ResponseSpecBuilder();
+        resBuilder.expectResponseTime(Matchers.lessThan(MAX_TIMEOUT));
+        RestAssured.responseSpecification = resBuilder.build();
+
+        // Habilita os logs da chamada caso ocorra algum erro
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 }
