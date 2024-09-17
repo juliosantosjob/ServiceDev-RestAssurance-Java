@@ -1,3 +1,11 @@
+Feature: Login
+
+  Scenario: Login com sucesso
+    Given o cliente realiza uma solicitação HTTP POST para o endpoint de login
+    And informe um corpo de requisição contendo credenciais válidas
+    Then a resposta deve ter o status HTTP 200 OK
+    And a resposta deve conter um token de autenticação válido
+
 Feature: Usuários
 
   Scenario: Listar usuários cadastrados

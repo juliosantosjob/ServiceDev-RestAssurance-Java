@@ -1,28 +1,21 @@
-package automation.dev.serverest.api.requests;
+    package automation.dev.serverest.api.requests;
 
-import automation.dev.serverest.api.base.BaseTest;
-import io.restassured.response.Response;
+    import automation.dev.serverest.api.base.BaseTest;
+    import io.restassured.RestAssured;
+    import io.restassured.response.Response;
 
-import static automation.dev.serverest.api.base.Routes.LOGIN;
-import static automation.dev.serverest.api.base.Routes.USERS;
+    public class LoginService extends BaseTest {
 
-public class LoginService extends BaseTest {
-
-    /**
-     * Service to handle user login requests.
-     *
-     * @param credentials The user's login credentials.
-     * @return The HTTP response from the login request.
-     */
-
-    public Response login(Object credentials) {
-        try {
-            return request
-                    .body(credentials)
-                    .when()
-                    .post(LOGIN);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to register user", e);
+        public static Response login(Object credentials) {
+            try {
+                return RestAssured.given()
+                        .baseUri(APP_BASE_URL)
+                        .header("Content-Type", CONTENT_TYPE)
+                        .body(credentials)
+                        .when()
+                        .post(LOGIN);
+            } catch (Exception e) {
+                throw new RuntimeException("Error on login: " + e.getMessage());
+            }
         }
     }
-}

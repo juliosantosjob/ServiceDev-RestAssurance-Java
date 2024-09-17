@@ -4,8 +4,6 @@ public class LoginEntities {
     private String email;
     private String password;
 
-    public LoginEntities() {}
-
     public LoginEntities(String email, String password) {
         this.email = email;
         this.password = password;

@@ -1,9 +1,8 @@
 package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
-
-import static automation.dev.serverest.api.base.Routes.USERS;
 
 /**
  * @author Julio C. Santos
@@ -18,14 +17,16 @@ public class RegisterUsersService extends BaseTest {
      * @return The HTTP response.
      */
 
-    public Response registerUser(Object newUser) {
+    public static Response registerUser(Object newUser) {
         try {
-            return request
+            return RestAssured.given()
+                    .baseUri(APP_BASE_URL)
+                    .header("Content-Type", CONTENT_TYPE)
                     .body(newUser)
                     .when()
                     .post(USERS);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to register user", e);
+            throw new RuntimeException("Failed to register user" + e.getMessage());
         }
     }
 }

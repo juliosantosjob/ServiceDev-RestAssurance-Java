@@ -8,7 +8,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         tags = "@regression",
         features = {"src/test/resources/features"},
-        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        glue = {"steps"},
-        dryRun = false)
+        glue = {"automation.dev.serverest.api.stepDefinition"},
+        monochrome = true,
+        dryRun = false
+)
 public class TestRunner {}

@@ -1,9 +1,9 @@
 package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-import static automation.dev.serverest.api.base.Routes.USERS;
 
 /**
  * @author Julio C. Santos
@@ -19,14 +19,16 @@ public class EditUserService extends BaseTest {
      * @throws RuntimeException If an error occurs while editing the user.
      */
 
-    public Response editUser(Object newUser, String idUser) {
+    public static Response editUser(Object newUser, String idUser) {
         try {
-            return request
+            return RestAssured.given()
+                    .baseUri(APP_BASE_URL)
+                    .header("Content-Type", CONTENT_TYPE)
                     .body(newUser)
                     .when()
                     .put(USERS.concat(idUser));
         } catch (Exception e) {
-            throw new RuntimeException("Failed to register user", e);
+            throw new RuntimeException("Failed to register user" + e.getMessage());
         }
     }
 }

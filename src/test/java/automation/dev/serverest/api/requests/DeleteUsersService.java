@@ -1,9 +1,8 @@
 package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
-
-import static automation.dev.serverest.api.base.Routes.USERS;
 
 /**
  * @author Julio C. Santos
@@ -18,13 +17,15 @@ public class DeleteUsersService extends BaseTest {
      * @return The response from the DELETE request.
      */
 
-    public Response deleteUser(String idUser) {
+    public static Response deleteUser(String idUser) {
         try {
-            return request
+            return RestAssured.given()
+                    .baseUri(APP_BASE_URL)
+                    .header("Content-Type", CONTENT_TYPE)
                     .when()
                     .delete(USERS.concat(idUser));
         } catch (Exception e) {
-            throw new RuntimeException("Failed to delete user", e);
+            throw new RuntimeException("Failed to delete user" + e.getMessage());
         }
     }
 }

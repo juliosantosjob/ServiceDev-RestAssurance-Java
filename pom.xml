@@ -15,6 +15,7 @@
         <rest-assured.version>5.3.0</rest-assured.version>
         <jackson.version>2.15.2</jackson.version>
         <junit.version>4.13.1</junit.version>
+         <allureJ5.version>2.23.0</allureJ5.version>
         <junit.jupiter.version>RELEASE</junit.jupiter.version>
     </properties>
 
@@ -46,6 +47,11 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allureJ5.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

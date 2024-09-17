@@ -1,32 +1,20 @@
 package automation.dev.serverest.api.base;
 
+import io.cucumber.java.Before;
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.specification.RequestSpecification;
-import org.hamcrest.Matchers;
-import org.junit.Before;
 
-public class BaseTest implements Constants {
-    protected static RequestSpecification request;
+public class BaseTest {
+    // Configs
+    protected static String CONTENT_TYPE = "application/json";
+    protected static Long MAX_TIMEOUT = 3000L;
+
+    // Routes
+    protected static String  APP_BASE_URL =  "https://serverest.dev";
+    protected static String USERS = "/usuarios/";
+    protected static String LOGIN = "/login/";
 
     @Before
     public void setUp() {
-        // Configura a base URI diretamente no given()
-        RestAssured.baseURI = APP_BASE_URL;
-        request = RestAssured.given().header("Content-Type", "application/json");
-
-        // Definindo ContentTypeJson como padrão para todos os testes
-        RequestSpecBuilder reqBuilder = new RequestSpecBuilder();
-        reqBuilder.setContentType(APP_CONTENT_TYPE);
-        RestAssured.requestSpecification = reqBuilder.build();
-
-        // Define um timeout maximo para a execução de cada chamada
-        ResponseSpecBuilder resBuilder = new ResponseSpecBuilder();
-        resBuilder.expectResponseTime(Matchers.lessThan(MAX_TIMEOUT));
-        RestAssured.responseSpecification = resBuilder.build();
-
-        // Habilita os logs da chamada caso ocorra algum erro
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 }
