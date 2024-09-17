@@ -3,6 +3,10 @@
     import automation.dev.serverest.api.base.BaseTest;
     import io.restassured.RestAssured;
     import io.restassured.response.Response;
+ 
+    /**
+     * @author Julio C. Santos
+     */
 
     public class LoginService extends BaseTest {
 
