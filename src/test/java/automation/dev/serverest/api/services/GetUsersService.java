@@ -25,6 +25,13 @@ public class GetUsersService extends BaseTest {
         }
     }
 
+    /**
+     * Fetches the details of a user by their ID from the server.
+     *
+     * @param idUser The ID of the user to retrieve.
+     * @return Response containing the server's response with the user's details.
+     */
+
     public Response getUserById(String idUser) {
         try {
             return request.get(USERS.concat(idUser));
