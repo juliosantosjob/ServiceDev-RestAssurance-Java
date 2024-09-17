@@ -1,4 +1,5 @@
 package automation.dev.serverest.api.base;
+
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -13,7 +14,7 @@ public class BaseTest implements Constants {
     public void setUp() {
         // Configura a base URI diretamente no given()
         RestAssured.baseURI = APP_BASE_URL;
-        request = RestAssured.given();
+        request = RestAssured.given().header("Content-Type", "application/json");
 
         // Definindo ContentTypeJson como padrão para todos os testes
         RequestSpecBuilder reqBuilder = new RequestSpecBuilder();

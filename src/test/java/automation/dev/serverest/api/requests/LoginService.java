@@ -3,27 +3,24 @@ package automation.dev.serverest.api.requests;
 import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
 
+import static automation.dev.serverest.api.base.Routes.LOGIN;
 import static automation.dev.serverest.api.base.Routes.USERS;
 
-/**
- * @author Julio C. Santos
- */
-
-public class RegisterUsersService extends BaseTest {
+public class LoginService extends BaseTest {
 
     /**
-     * Registers a new user.
+     * Service to handle user login requests.
      *
-     * @param newUser The new user object in JSON format.
-     * @return The HTTP response.
+     * @param credentials The user's login credentials.
+     * @return The HTTP response from the login request.
      */
 
-    public Response registerUser(Object newUser) {
+    public Response login(Object credentials) {
         try {
             return request
-                    .body(newUser)
+                    .body(credentials)
                     .when()
-                    .post(USERS);
+                    .post(LOGIN);
         } catch (Exception e) {
             throw new RuntimeException("Failed to register user", e);
         }

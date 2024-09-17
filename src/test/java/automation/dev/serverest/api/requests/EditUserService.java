@@ -5,6 +5,10 @@ import io.restassured.response.Response;
 
 import static automation.dev.serverest.api.base.Routes.USERS;
 
+/**
+ * @author Julio C. Santos
+ */
+
 public class EditUserService extends BaseTest {
 
     /**
@@ -18,7 +22,6 @@ public class EditUserService extends BaseTest {
     public Response editUser(Object newUser, String idUser) {
         try {
             return request
-                    .header("Content-Type", "application/json")
                     .body(newUser)
                     .when()
                     .put(USERS.concat(idUser));

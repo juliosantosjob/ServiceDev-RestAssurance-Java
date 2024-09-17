@@ -21,7 +21,6 @@ public class DeleteUsersService extends BaseTest {
     public Response deleteUser(String idUser) {
         try {
             return request
-                    .header("Content-Type", "application/json")
                     .when()
                     .delete(USERS.concat(idUser));
         } catch (Exception e) {

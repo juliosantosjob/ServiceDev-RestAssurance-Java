@@ -1,57 +1,57 @@
 Feature: Usuários
 
   Scenario: Listar usuários cadastrados
-    When o usuário faz uma requisição para listar os usuários
-    Then o sistema deve retornar o status 200 OK
+    When o cliente realiza uma solicitação HTTP GET para o endpoint "/users"
+    Then a resposta deve ter o status HTTP 200 OK
 
   Scenario: Cadastrar novo usuário
-    When o usuário faz uma requisição para cadastrar um novo usuário com dados válidos
-    Then o sistema deve retornar o status 201 Created
+    When o cliente realiza uma solicitação HTTP POST para o endpoint "/users" com um payload válido
+    Then a resposta deve ter o status HTTP 201 Created
 
   Scenario: Cadastro com nome em branco
-    When o usuário faz uma requisição para cadastrar um novo usuário com o nome em branco
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP POST para o endpoint "/users" com um payload onde o campo "nome" está em branco
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
   Scenario: Cadastro com e-mail em branco
-    When o usuário faz uma requisição para cadastrar um novo usuário com o e-mail em branco
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP POST para o endpoint "/users" com um payload onde o campo "email" está em branco
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
   Scenario: Cadastro com e-mail inválido
-    When o usuário faz uma requisição para cadastrar um novo usuário com o e-mail inválido
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP POST para o endpoint "/users" com um payload onde o campo "email" contém um endereço inválido
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
   Scenario: Cadastro com senha em branco
-    When o usuário faz uma requisição para cadastrar um novo usuário com a senha em branco
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP POST para o endpoint "/users" com um payload onde o campo "senha" está em branco
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
   Scenario: Cadastro com campo 'administrador' como 'false'
-    When o usuário faz uma requisição para cadastrar um novo usuário com o campo 'administrador' como 'false'
-    Then o sistema deve permitir o cadastro e retornar o status 201 Created
+    When o cliente realiza uma solicitação HTTP POST para o endpoint "/users" com um payload onde o campo "administrador" está definido como false
+    Then a resposta deve ter o status HTTP 201 Created
 
 Feature: Buscar Usuário
 
   Scenario: Buscar usuário pelo ID válido
-    When o usuário faz uma requisição para buscar um usuário com um ID válido
-    Then o sistema deve retornar o status 200 OK
+    When o cliente realiza uma solicitação HTTP GET para o endpoint "/users/{id}" com um ID válido
+    Then a resposta deve ter o status HTTP 200 OK
 
   Scenario: Buscar usuário com ID inválido
-    When o usuário faz uma requisição para buscar um usuário com um ID inválido
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP GET para o endpoint "/users/{id}" com um ID inválido
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
   Scenario: Buscar usuário com ID em branco
-    When o usuário faz uma requisição para buscar um usuário com o ID em branco
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP GET para o endpoint "/users/{id}" com um ID em branco
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
 Feature: Excluir Usuário
 
   Scenario: Excluir usuário
-    When o usuário faz uma requisição para excluir um usuário com um ID válido
-    Then o sistema deve excluir o usuário e retornar o status 200 OK
+    When o cliente realiza uma solicitação HTTP DELETE para o endpoint "/users/{id}" com um ID válido
+    Then a resposta deve ter o status HTTP 200 OK
 
   Scenario: Excluir usuário com ID inválido
-    When o usuário faz uma requisição para excluir um usuário com um ID inválido
-    Then o sistema deve retornar o status 400 Bad Request
+    When o cliente realiza uma solicitação HTTP DELETE para o endpoint "/users/{id}" com um ID inválido
+    Then a resposta deve ter o status HTTP 400 Bad Request
 
   Scenario: Excluir usuário já excluído
-    When o usuário faz uma requisição para excluir um usuário que já foi excluído
-    Then o sistema deve retornar o status 404 Not Found ou uma mensagem de erro apropriada
+    When o cliente realiza uma solicitação HTTP DELETE para o endpoint "/users/{id}" com um ID que não existe mais
+    Then a resposta deve ter o status HTTP 404 Not Found ou retornar uma mensagem de erro apropriada
