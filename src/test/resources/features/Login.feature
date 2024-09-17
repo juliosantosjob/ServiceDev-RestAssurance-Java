@@ -1,5 +1,6 @@
 #language:en
 
+  @regression
   Feature: Login functionality
 
     Scenario: Successful login
@@ -8,7 +9,6 @@
       And the response should contain a valid authentication token
       And the response message should be "Login realizado com sucesso"
 
-    @regression
     Scenario: Login with invalid email
       Given I send a POST request with an invalid email body to the login endpoint
       Then the API should return status code 400 Bad Request
