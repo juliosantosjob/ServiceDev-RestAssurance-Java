@@ -1,7 +1,6 @@
-package automation.dev.serverest.api.services;
+package automation.dev.serverest.api.requests;
 import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
-import org.junit.Test;
 
 import static automation.dev.serverest.api.base.Routes.USERS;
 
@@ -17,7 +16,7 @@ public class GetUsersService extends BaseTest {
      * @return Response containing the server's response with the list of users.
      */
 
-    public Response getRegisteredUsers() {
+    public Response getUser() {
         try {
             return request.get(USERS);
         } catch (Exception e) {

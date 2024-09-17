@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.services;
+package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;

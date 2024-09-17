@@ -1,4 +1,4 @@
-package org.example.entities;
+package automation.dev.serverest.api.entities;
 
 public class NewUsersEntities {
     private String nome;
