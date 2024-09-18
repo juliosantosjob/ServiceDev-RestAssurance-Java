@@ -14,18 +14,18 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
 
 public class LoginSteps {
-    LoginModel payload;
+    LoginModel credentials;
     Response response;
 
     @Given("I send a POST request with valid credentials to the login endpoint")
     public void iSendAPostRequestWithValidCredentialsToTheLoginEndpoint() {
-        payload = new LoginModel("exemplo@example.com", "senha123");
+        credentials = new LoginModel("exemplo@example.com", "senha123");
         response = login(payload);
     }
 
     @Given("I send a POST request with an invalid email body to the login endpoint")
     public void iSendAPostRequestWithAnInvalidEmailBodyToTheLoginEndpoint() {
-        payload = new LoginModel("example.com", "senha123");
+        credentials = new LoginModel("example.com", "senha123");
         response = login(payload);
     }
 
