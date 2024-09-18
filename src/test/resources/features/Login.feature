@@ -12,4 +12,4 @@
     Scenario: Login with invalid email
       Given I send a POST request with an invalid email body to the login endpoint
       Then the API should return status code 400 Bad Request
-      And the response message should be "email deve ser um email válido"
+      And the response message invalid email should be "email deve ser um email válido"

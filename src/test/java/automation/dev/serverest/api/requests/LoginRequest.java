@@ -16,7 +16,7 @@ public class LoginRequest extends BaseTest {
      * @return Response containing the server's response after the login attempt.
      */
 
-    public static Response login(Object credentials) {
+    public static Response loginUser(Object credentials) {
         try {
             return requester
                     .body(credentials)

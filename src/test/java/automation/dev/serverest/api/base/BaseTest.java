@@ -1,6 +1,5 @@
 package automation.dev.serverest.api.base;
 
-import io.cucumber.java.Before;
 import io.restassured.RestAssured;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -9,7 +8,6 @@ import org.hamcrest.Matchers;
 public class BaseTest implements Constants, Routes {
     protected static RequestSpecification requester;
 
-    @Before
     public static void setupRestAssured() {
         // Objeto de solicitação rest-assurance
         requester = RestAssured
