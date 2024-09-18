@@ -11,6 +11,7 @@ public class BaseTest implements Constants, Routes {
 
     @Before
     public static void setupRestAssured() {
+        // Objeto de solicitação rest-assurance
         requester = RestAssured
                 .given()
                 .baseUri(APP_BASE_URL)
