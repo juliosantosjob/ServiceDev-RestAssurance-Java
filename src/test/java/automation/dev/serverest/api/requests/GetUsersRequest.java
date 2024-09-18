@@ -34,7 +34,7 @@ public class GetUsersRequest extends BaseTest {
         try {
             return requester.get(USERS.concat(idUser));
         } catch (Exception e) {
-            throw new RuntimeException("Failed to get users", e);
+            throw new RuntimeException("Failed to get users" + e.getMessage());
         }
     }
 }
