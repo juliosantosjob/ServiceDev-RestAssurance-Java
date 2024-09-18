@@ -1,10 +1,10 @@
 package automation.dev.serverest.api.models;
 
-public class LoginEntities {
+public class LoginModel {
     private String email;
     private String password;
 
-    public LoginEntities(String email, String password) {
+    public LoginModel(String email, String password) {
         this.email = email;
         this.password = password;
     }

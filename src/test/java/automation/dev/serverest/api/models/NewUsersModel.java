@@ -1,14 +1,14 @@
 package automation.dev.serverest.api.models;
 
-public class NewUsersEntities {
+public class NewUsersModel {
     private String nome;
     private String email;
     private String password;
     private String administrador;
 
-    public NewUsersEntities() {}
+    public NewUsersModel() {}
 
-    public NewUsersEntities(String nome, String email, String password, String administrador) {
+    public NewUsersModel(String nome, String email, String password, String administrador) {
         this.nome = nome;
         this.email = email;
         this.password = password;

@@ -1,14 +1,13 @@
 package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 /**
  * @author Julio C. Santos
  */
 
-public class GetUsersService extends BaseTest {
+public class GetUsersRequest extends BaseTest {
 
     /**
      * Fetches the list of registered users from the server.
@@ -18,9 +17,7 @@ public class GetUsersService extends BaseTest {
 
     public static Response getUser() {
         try {
-            return RestAssured
-                    .given()
-                    .get(USERS);
+            return requester.get(USERS);
         } catch (Exception e) {
             throw new RuntimeException("Failed to get users" + e.getMessage());
         }
@@ -35,8 +32,7 @@ public class GetUsersService extends BaseTest {
 
     public Response getUserById(String idUser) {
         try {
-            return RestAssured.given()
-                    .get(USERS.concat(idUser));
+            return requester.get(USERS.concat(idUser));
         } catch (Exception e) {
             throw new RuntimeException("Failed to get users", e);
         }

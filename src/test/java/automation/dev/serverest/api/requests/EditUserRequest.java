@@ -1,28 +1,28 @@
 package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 /**
  * @author Julio C. Santos
  */
 
-public class RegisterUsersService extends BaseTest {
+public class EditUserRequest extends BaseTest {
 
     /**
-     * Registers a new user.
+     * Edits a user with the provided new data.
      *
-     * @param newUser The new user object in JSON format.
-     * @return The HTTP response.
+     * @param newUser New user data.
+     * @return Response from the request.
+     * @throws RuntimeException If an error occurs while editing the user.
      */
 
-    public static Response registerUser(Object newUser) {
+    public static Response editUser(Object newUser, String idUser) {
         try {
-            return RestAssured.given()
+            return requester
                     .body(newUser)
                     .when()
-                    .post(USERS);
+                    .put(USERS.concat(idUser));
         } catch (Exception e) {
             throw new RuntimeException("Failed to register user" + e.getMessage());
         }

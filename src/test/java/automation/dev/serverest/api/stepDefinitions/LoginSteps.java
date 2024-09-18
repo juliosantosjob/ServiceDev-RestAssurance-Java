@@ -1,12 +1,12 @@
-package automation.dev.serverest.api.stepDefinition;
+package automation.dev.serverest.api.stepDefinitions;
 
-import automation.dev.serverest.api.models.LoginEntities;
+import automation.dev.serverest.api.models.LoginModel;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 
-import static automation.dev.serverest.api.requests.LoginService.login;
+import static automation.dev.serverest.api.requests.LoginRequest.login;
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,18 +14,18 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
 
 public class LoginSteps {
-    LoginEntities payload;
+    LoginModel payload;
     Response response;
 
     @Given("I send a POST request with valid credentials to the login endpoint")
     public void iSendAPostRequestWithValidCredentialsToTheLoginEndpoint() {
-        payload = new LoginEntities("exemplo@example.com", "senha123");
+        payload = new LoginModel("exemplo@example.com", "senha123");
         response = login(payload);
     }
 
     @Given("I send a POST request with an invalid email body to the login endpoint")
     public void iSendAPostRequestWithAnInvalidEmailBodyToTheLoginEndpoint() {
-        payload = new LoginEntities("example.com", "senha123");
+        payload = new LoginModel("example.com", "senha123");
         response = login(payload);
     }
 

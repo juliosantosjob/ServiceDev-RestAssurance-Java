@@ -1,14 +1,13 @@
 package automation.dev.serverest.api.requests;
 
 import automation.dev.serverest.api.base.BaseTest;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 /**
  * @author Julio C. Santos
  */
 
-public class DeleteUsersService extends BaseTest {
+public class DeleteUsersRequest extends BaseTest {
 
     /**
      * Deletes a user with the given ID.
@@ -19,7 +18,7 @@ public class DeleteUsersService extends BaseTest {
 
     public static Response deleteUser(String idUser) {
         try {
-            return RestAssured.given()
+            return requester
                     .when()
                     .delete(USERS.concat(idUser));
         } catch (Exception e) {

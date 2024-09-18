@@ -3,14 +3,17 @@ package automation.dev.serverest.api.base;
 import io.cucumber.java.Before;
 import io.restassured.RestAssured;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 
-public class BaseTest implements Constants {
+public class BaseTest implements Constants, Routes {
+    protected static RequestSpecification requester;
 
     @Before
     public static void setupRestAssured() {
-        RestAssured.baseURI = APP_BASE_URL;
-        RestAssured.requestSpecification = RestAssured.given()
+        requester = RestAssured
+                .given()
+                .baseUri(APP_BASE_URL)
                 .header("Content-Type", CONTENT_TYPE);
 
         // Define um timeout maximo para a execução de cada chamada

@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
         tags = "@regression",
         features = {"src/test/resources/features"},
         glue = {
-                "automation.dev.serverest.api.stepDefinition",
+                "automation.dev.serverest.api.stepDefinitions",
                 "automation.dev.serverest.api.base"
         },
         monochrome = true,
