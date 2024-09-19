@@ -1,6 +1,6 @@
 package automation.dev.serverest.api.testCases;
 
-import automation.dev.serverest.api.config.BaseTest;
+import automation.dev.serverest.api.support.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.*;
@@ -25,22 +25,21 @@ public class RegisterTest extends BaseTest {
                 faker.name().firstName(),
                 faker.internet().emailAddress(),
                 faker.internet().password(),
-                Boolean.toString(true)
-        );
+                Boolean.toString(true));
     }
 
     @AfterEach
-    public void endSetup() {
+    public void endsetup() {
         if (userId != null) {
-            deleteUser(userId)
-                    .then()
+            deleteUser(userId).then()
                     .statusCode(SC_OK);
         }
     }
 
     @Test
+    @Order(1)
     @Tag("registerSuccess")
-    @DisplayName("Cenario 01: Deve realizaar cadastro com sucesso ")
+    @DisplayName("Cenario 01: Deve realizar cadastro com sucesso ")
     public void registrationSuccessful() {
         userId = registerUser(newUsers)
                 .then()
@@ -54,10 +53,12 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
+    @Order(2)
     @Tag("registerFailure")
     @DisplayName("Cenario 02: Deve falhar ao realizar cadastro com e-mail inválido")
     public void registrationWithInvalidEmail() {
-        newUsers.setEmail("invalid_email");
+        newUsers.setEmail(faker.internet().emailAddress()
+                .replace("@", ""));
         registerUser(newUsers)
                 .then()
                 .statusCode(SC_BAD_REQUEST)
@@ -66,8 +67,9 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
+    @Order(3)
     @Tag("registerFailure")
-    @DisplayName("Cenario 03: Deve falhar ao realizar cadastro com email em branco")
+    @DisplayName("Cenario 03: Deve falhar ao realizar cadastro com nome em branco")
     public void registrationWithEmptyName() {
         newUsers.setNome("");
         registerUser(newUsers)
@@ -78,8 +80,9 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
+    @Order(4)
     @Tag("registerFailure")
-    @DisplayName("Cenario 03: Deve falhar ao realizar cadastro com email em branco")
+    @DisplayName("Cenario 04: Deve falhar ao realizar cadastro com email em branco")
     public void registrationWithEmptyEmail() {
         newUsers.setEmail("");
         registerUser(newUsers)
@@ -90,8 +93,9 @@ public class RegisterTest extends BaseTest {
     }
 
     @Test
+    @Order(5)
     @Tag("registerFailure")
-    @DisplayName("Cenario 04: Deve falhar ao realizar cadastro com senha em branco")
+    @DisplayName("Cenario 05: Deve falhar ao realizar cadastro com senha em branco")
     public void registrationWithEmptyPassword() {
         newUsers.setPassword("");
         registerUser(newUsers)

@@ -1,9 +1,16 @@
 package automation.dev.serverest.api.requests;
 
-import automation.dev.serverest.api.config.BaseTest;
+import automation.dev.serverest.api.support.BaseTest;
 import io.restassured.response.Response;
 
 public class DeleteUsersRequest extends BaseTest {
+
+    /**
+     * Metodo para deletar usuarios
+     *
+     * @param idUser Id da conta que será deletada
+     * @return Response da chamada
+     */
 
     public static Response deleteUser(String idUser) {
         try {

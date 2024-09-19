@@ -1,6 +1,6 @@
 package automation.dev.serverest.api.testCases;
 
-import automation.dev.serverest.api.config.BaseTest;
+import automation.dev.serverest.api.support.BaseTest;
 import automation.dev.serverest.api.models.LoginModel;
 
 import automation.dev.serverest.api.models.NewUsersModel;

@@ -1,10 +1,15 @@
 package automation.dev.serverest.api.requests;
 
-import automation.dev.serverest.api.config.BaseTest;
+import automation.dev.serverest.api.support.BaseTest;
 import io.restassured.response.Response;
 
 public class GetUsersRequest extends BaseTest {
 
+    /**
+     * Método para obter todos os usuários
+     *
+     * @return Response da chamada
+     */
     public static Response getUser() {
         try {
             return requester.get(USERS);
@@ -13,7 +18,13 @@ public class GetUsersRequest extends BaseTest {
         }
     }
 
-    public Response getUserById(String idUser) {
+    /**
+     * Método para obter um usuário por ID
+     *
+     * @param idUser Id do usuário a ser obtido
+     * @return Response da chamada
+     */
+    public static Response getUserById(String idUser) {
         try {
             String endpoint = String.format("%s%s", USERS, idUser);
             return requester.get(endpoint);
