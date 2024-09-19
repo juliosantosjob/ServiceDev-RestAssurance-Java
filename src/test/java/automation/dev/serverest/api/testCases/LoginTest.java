@@ -5,11 +5,9 @@ import automation.dev.serverest.api.models.LoginModel;
 
 import automation.dev.serverest.api.models.NewUsersModel;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.*;
 
+import static automation.dev.serverest.api.requests.DeleteUsersRequest.deleteUser;
 import static automation.dev.serverest.api.requests.LoginRequest.loginUser;
 import static automation.dev.serverest.api.requests.RegisterUsersRequest.registerUser;
 import static org.apache.http.HttpStatus.*;
@@ -18,18 +16,18 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.startsWith;
 
-/**
- * @author Julio C. Santos
- */
-
 @Tag("regression")
-public class LoginTests extends BaseTest {
+@Tag("loginRegression")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class LoginTest extends BaseTest {
     private NewUsersModel newUsers;
     private LoginModel credential;
     private final Faker faker = new Faker();
+    private String id_;
 
     @BeforeEach
-    public void initHook() {
+    public void initsetup() {
         newUsers = new NewUsersModel(
                 faker.name().firstName(),
                 faker.internet().emailAddress(),
@@ -40,11 +38,21 @@ public class LoginTests extends BaseTest {
                 newUsers.getEmail(),
                 newUsers.getPassword()
         );
-        registerUser(newUsers);
+        id_ = registerUser(newUsers)
+                .then()
+                .extract()
+                .path("_id")
+                .toString();
     }
 
+    @AfterAll
+    public void endsetup() {
+        deleteUser(id_).then()
+                .statusCode(SC_OK);
+    }
 
     @Test
+    @Order(1)
     @Tag("loginSuccess")
     @DisplayName("Cenario 01: Deve realizar login com sucesso")
     public void loginSuccessful() {
@@ -58,6 +66,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(2)
     @Tag("loginInvalidEmail")
     @DisplayName("Cenario 02: Não deve realizar login com email invalido")
     public void loginWithInvalidEmail() {
@@ -70,6 +79,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(3)
     @Tag("loginEmptyEmail")
     @DisplayName("Cenario 03: Não deve realizar login com email vazio")
     public void loginWithEmptyEmail() {
@@ -82,6 +92,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(4)
     @Tag("loginInvalidPassword")
     @DisplayName("Cenario 04: Não deve realizar login com senha inválida")
     public void loginWithInvalidPassword() {
@@ -93,6 +104,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(5)
     @Tag("loginEmptyPassword")
     @DisplayName("Cenario 05: Não deve realizar login com senha vazia")
     public void loginWithEmptyPassword() {
@@ -105,6 +117,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(6)
     @Tag("loginEmptyCredentials")
     @DisplayName("Cenario 06: Não deve realizar login com email e senha vazios")
     public void loginWithEmptyCredentials() {
@@ -119,6 +132,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(7)
     @Tag("loginSpacesInCredentials")
     @DisplayName("Cenario 07: Não deve realizar login com email e senha com espaços em branco")
     public void loginWithSpacesInCredentials() {
@@ -132,6 +146,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(8)
     @Tag("loginNullEmail")
     @DisplayName("Cenario 08: Não deve realizar login com email nulo")
     public void loginWithNullEmail() {
@@ -144,6 +159,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(9)
     @Tag("loginNullPassword")
     @DisplayName("Cenario 09: Não deve realizar login com senha nula")
     public void loginWithNullPassword() {
