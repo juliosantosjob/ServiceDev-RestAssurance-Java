@@ -1,29 +1,19 @@
 package automation.dev.serverest.api.requests;
 
-import automation.dev.serverest.api.base.BaseTest;
+import automation.dev.serverest.api.config.BaseTest;
+import automation.dev.serverest.api.models.NewUsersModel;
 import io.restassured.response.Response;
-
-/**
- * @author Julio C. Santos
- */
 
 public class RegisterUsersRequest extends BaseTest {
 
-    /**
-     * Registers a new user.
-     *
-     * @param newUser The new user object in JSON format.
-     * @return The HTTP response.
-     */
-
-    public static Response registerUser(Object newUser) {
+    public static Response registerUser(NewUsersModel newUser) {
         try {
             return requester
                     .body(newUser)
                     .when()
                     .post(USERS);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to register user" + e.getMessage());
+            throw new RuntimeException("Failed to register user: " + e.getMessage());
         }
     }
 }

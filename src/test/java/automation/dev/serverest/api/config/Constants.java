@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.base;
+package automation.dev.serverest.api.config;
 
 public interface Constants {
     String CONTENT_TYPE = "application/json";

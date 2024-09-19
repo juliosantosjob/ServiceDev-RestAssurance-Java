@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.base;
+package automation.dev.serverest.api.config;
 
 public interface Routes {
     String APP_BASE_URL = "https://serverest.dev";

@@ -1,20 +1,9 @@
 package automation.dev.serverest.api.requests;
 
-import automation.dev.serverest.api.base.BaseTest;
+import automation.dev.serverest.api.config.BaseTest;
 import io.restassured.response.Response;
 
-/**
- * @author Julio C. Santos
- */
-
 public class DeleteUsersRequest extends BaseTest {
-
-    /**
-     * Deletes a user with the given ID.
-     *
-     * @param idUser The ID of the user to be deleted.
-     * @return The response from the DELETE request.
-     */
 
     public static Response deleteUser(String idUser) {
         try {

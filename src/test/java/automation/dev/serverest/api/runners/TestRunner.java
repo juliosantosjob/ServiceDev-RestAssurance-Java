@@ -1,15 +1,13 @@
 package automation.dev.serverest.api.runners;
 
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import automation.dev.serverest.api.testCases.LoginTests;
+import org.junit.platform.suite.api.IncludeTags;
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.SelectPackages;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        tags = "@regression",
-        features = {"src/test/resources/features"},
-        glue = {"automation.dev.serverest.api.stepDefinitions"},
-        monochrome = true,
-        dryRun = false
-)
-public class TestRunner {}
+@Suite
+@SelectClasses({ LoginTests.class })
+@SelectPackages("src/test/java/automation/dev/serverest/api/tests")
+@IncludeTags("regression")
+public class TestRunner { }
