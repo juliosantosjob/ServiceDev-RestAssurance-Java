@@ -12,6 +12,7 @@ public class LoginRequest extends BaseTest {
      * @param credentials Objeto contendo as credenciais de login (email e senha)
      * @return Response da chamada
      */
+
     public static Response loginUser(LoginModel credentials) {
         try {
             return requester

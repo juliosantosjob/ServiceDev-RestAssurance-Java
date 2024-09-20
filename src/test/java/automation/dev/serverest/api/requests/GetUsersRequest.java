@@ -10,6 +10,7 @@ public class GetUsersRequest extends BaseTest {
      *
      * @return Response da chamada
      */
+
     public static Response getUser() {
         try {
             return requester.get(USERS);
@@ -24,6 +25,7 @@ public class GetUsersRequest extends BaseTest {
      * @param idUser Id do usuário a ser obtido
      * @return Response da chamada
      */
+
     public static Response getUserById(String idUser) {
         try {
             String endpoint = String.format("%s%s", USERS, idUser);

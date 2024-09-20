@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.testCases;
+package automation.dev.serverest.api.tests;
 
 import automation.dev.serverest.api.support.BaseTest;
 import automation.dev.serverest.api.models.LoginModel;

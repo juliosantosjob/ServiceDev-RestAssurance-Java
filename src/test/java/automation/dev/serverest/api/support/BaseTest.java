@@ -1,5 +1,6 @@
 package automation.dev.serverest.api.support;
 
+import automation.dev.serverest.api.utils.Routes;
 import io.restassured.RestAssured;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.config.LogConfig;
@@ -12,24 +13,14 @@ public class BaseTest implements Constants, Routes {
 
     @BeforeEach
     public void setupRestAssured() {
-        setConfigRequestSpecification();
-        setConfigResponseSpecification();
-        setConfigLogging();
-    }
-
-    private void setConfigRequestSpecification() {
         requester = RestAssured.given()
-                .baseUri(Routes.APP_BASE_URL)
+                .baseUri(APP_BASE_URL)
                 .header("Content-Type", Constants.CONTENT_TYPE);
-    }
 
-    private void setConfigResponseSpecification() {
         ResponseSpecBuilder resBuilder = new ResponseSpecBuilder();
         resBuilder.expectResponseTime(Matchers.lessThan(Constants.MAX_TIMEOUT));
         RestAssured.responseSpecification = resBuilder.build();
-    }
 
-    private void setConfigLogging() {
         RestAssured.config = RestAssured.config()
                 .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails());
     }
