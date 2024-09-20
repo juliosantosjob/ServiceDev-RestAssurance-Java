@@ -18,6 +18,7 @@
         <jackson.version>2.15.2</jackson.version>
         <junitJupiter.version>5.9.2</junitJupiter.version>
         <JusuiteEngine.version>1.8.1</JusuiteEngine.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     </properties>
 
     <dependencies>
@@ -68,4 +69,17 @@
             <version>${jackson.version}</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
