@@ -1,2 +1,8 @@
-# config.properties.example
-app.base.url=https://example.com
+# Ambiente de Desenvolvimento
+app.base.url.dev=https://dev.example.com
+
+# Ambiente de Homologação
+app.base.url.hom=https://serverest.dev
+
+# Defina o ambiente atual "dev" ou "hom"
+app.environment=hom

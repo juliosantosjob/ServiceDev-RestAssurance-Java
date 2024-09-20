@@ -12,7 +12,7 @@ import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.*;
 
 @Tag("regression")
-@Tag("editUserRegression")
+@DisplayName("Feature: Testes de Edição de Usuário")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EditUserTest extends BaseTest {
@@ -48,7 +48,7 @@ public class EditUserTest extends BaseTest {
 
     @Test
     @Order(1)
-    @Tag("editSuccess")
+    @Tag("editUserSuccess")
     @DisplayName("Cenario 01: Deve realizar edição com sucesso")
     public void editUserSuccessful() {
         NewUsersModel updatedUser = new NewUsersModel(
@@ -65,7 +65,7 @@ public class EditUserTest extends BaseTest {
 
     @Test
     @Order(2)
-    @Tag("editFailure")
+    @Tag("editUserInvalidData")
     @DisplayName("Cenario 02: Deve falhar ao realizar edição com todos os dados em branco")
     public void editUserWithInvalidData() {
         NewUsersModel invalidUser = new NewUsersModel("", "", "", "");
@@ -77,7 +77,7 @@ public class EditUserTest extends BaseTest {
 
     @Test
     @Order(3)
-    @Tag("editFailure")
+    @Tag("editUserNonExistent")
     @DisplayName("Cenario 03: Deve criar um novo usuário ao tentar editar um usuário inexistente")
     public void editNonExistentUser() {
         NewUsersModel someUser = new NewUsersModel(
@@ -94,7 +94,7 @@ public class EditUserTest extends BaseTest {
 
     @Test
     @Order(4)
-    @Tag("editFailure")
+    @Tag("editUserNullFields")
     @DisplayName("Cenario 04: Deve falhar ao realizar edição com campos nulos")
     public void editUserWithNullFields() {
         NewUsersModel nullFieldsUser = new NewUsersModel(null, null, null, null);

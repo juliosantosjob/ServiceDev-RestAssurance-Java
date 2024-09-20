@@ -1,6 +1,8 @@
 package automation.dev.serverest.api.tests;
 
 import automation.dev.serverest.api.support.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
@@ -12,6 +14,8 @@ import static automation.dev.serverest.api.requests.GetUsersRequest.getUser;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.*;
 
+@Tag("regression")
+@DisplayName("Feature: Teste de Obtenção de Usuário")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GetUserTest extends BaseTest {
 
