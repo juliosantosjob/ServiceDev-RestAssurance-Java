@@ -22,6 +22,7 @@ public class BaseTest implements Constants, Routes {
         RestAssured.responseSpecification = resBuilder.build();
 
         RestAssured.config = RestAssured.config()
-                .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails());
+                .logConfig(LogConfig.logConfig()
+                        .enableLoggingOfRequestAndResponseIfValidationFails());
     }
 }
