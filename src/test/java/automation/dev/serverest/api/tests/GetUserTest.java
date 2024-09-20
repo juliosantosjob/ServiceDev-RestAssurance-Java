@@ -1,8 +1,6 @@
 package automation.dev.serverest.api.tests;
 
-import automation.dev.serverest.api.models.NewUsersModel;
 import automation.dev.serverest.api.support.BaseTest;
-import com.github.javafaker.Faker;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 

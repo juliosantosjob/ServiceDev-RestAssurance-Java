@@ -11,8 +11,8 @@ Este projeto contém testes automatizados para a API ServeRest usando Java e JUn
 
 1. Clone o repositório:
    ```bash
-   git clone <sua-url-do-repo>
-   cd <sua-pasta-do-projeto>
+   git clone https://github.com/juliosantosjob/ServiceDev-RestAssurance-Junit.git
+   cd ServiceDev-RestAssurance-Junit
    ```
 
 2. Instale as dependências e execute os testes:
