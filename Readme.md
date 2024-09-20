@@ -23,3 +23,14 @@ Este projeto contém testes automatizados para a API ServeRest usando Java e JUn
 ## Configuração
 
 Todas as propriedades de configuração, como a URL base da API, podem ser encontradas e editadas no arquivo `config.properties` localizado em `src/main/resources`.
+
+## 🌐 Socials:
+
+[![Email](https://img.shields.io/badge/Email-%23D14836.svg?logo=gmail&logoColor=white)](mailto:julio958214@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/julio-santos-43428019b)
+[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://www.facebook.com/profile.php?id=100003793058455)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/oficial_juliosantos/)
+[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/julio.saantos199)
+
+---
+[![](https://visitcount.itsvg.in/api?id=juliosantosjob&icon=0&color=0)](https://visitcount.itsvg.in)
