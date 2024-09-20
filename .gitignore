@@ -12,6 +12,7 @@ target/
 *.iml
 *.ipr
 allure-results
+src/main/resources/config.properties
 
 ### Eclipse ###
 .apt_generated
