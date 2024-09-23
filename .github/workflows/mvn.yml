@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Pipe
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
     - cron: "0 12,20 * * 1-5"
 
 jobs:
-  tests-e2e:
+  tests-api:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
