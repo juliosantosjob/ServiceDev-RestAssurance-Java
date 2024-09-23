@@ -1,0 +1,12 @@
+services:
+  restassured-tests:
+    build: .  # Construir a imagem Docker a partir do Dockerfile no diretório atual
+    container_name: restassured-container  # Nome do container
+    volumes:
+      - ./reports:/app/reports  # Montar volume para salvar relatórios de teste
+    networks:
+      - test-network  # Definir a rede para o container
+
+networks:
+  test-network:
+    driver: bridge
