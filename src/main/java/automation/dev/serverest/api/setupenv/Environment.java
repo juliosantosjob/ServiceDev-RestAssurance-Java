@@ -8,7 +8,7 @@ public class Environment {
         if (Config.get("app.base.url.hom") == null) {
             baseUrl = System.getenv("APP_BASE_URL");
         } else {
-            baseUrl = Config.get("app.base.url.hom");
+            System.out.println("Base URL Env must be defined!");
         }
         return baseUrl;
     }
