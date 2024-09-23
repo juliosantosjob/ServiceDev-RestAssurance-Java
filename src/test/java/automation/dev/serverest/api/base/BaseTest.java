@@ -9,11 +9,9 @@ import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 
-public class BaseTest implements Constants {
+public class BaseTest implements Constants, Routes {
     protected static RequestSpecification requester;
     protected String APP_BASE_URL = Environment.getBaseUrl();
-    protected static String USERS = "/usuarios/";
-    protected static String LOGIN = "/login/";
 
     @BeforeEach
     public void setupRestAssured() {
