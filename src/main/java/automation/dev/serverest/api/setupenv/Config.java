@@ -1,24 +1,24 @@
 package automation.dev.serverest.api.setupenv;
 
-import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
-    private static String PATH_PROP = "/src/main/resources/config.properties";
-    private static String LOAD_PATH = System.getProperty("user.dir") + PATH_PROP;
     private static Properties properties = new Properties();
 
-    private static Properties loadProp() {
-        try {
-            properties.load(new FileInputStream(LOAD_PATH));
-
-        } catch (Exception e) {
-            System.out.println("**** WARNING: Missing config.properties. **** " + e);
+    static {
+        try (InputStream input = Config.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input == null) {
+                throw new RuntimeException("config.properties file not found in the classpath");
+            }
+            properties.load(input);
+        } catch (IOException ex) {
+            throw new RuntimeException("Error loading config.properties file", ex);
         }
-        return properties;
     }
 
-    public static String get(String env) {
-        return loadProp().getProperty(env);
+    public static String get(String key) {
+        return properties.getProperty(key);
     }
 }
