@@ -8,6 +8,6 @@ public class Environment {
         } else if ("hom".equalsIgnoreCase(environment)) {
             return Config.get("app.base.url.hom");
         }
-        throw new IllegalArgumentException("Ambiente inválido: " + environment);
+        throw new IllegalArgumentException("Invalid environment : " + environment);
     }
 }
