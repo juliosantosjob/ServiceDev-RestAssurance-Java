@@ -9,16 +9,11 @@ public class Environment {
             baseUrl = Config.get("app.base.url.dev");
         } else if ("hom".equalsIgnoreCase(environment)) {
             baseUrl = Config.get("app.base.url.hom");
-        }
-
-        if (baseUrl == null) {
+        } else if (baseUrl == null){
             baseUrl = System.getenv("APP_BASE_URL");
-        }
-
-        if (baseUrl == null) {
+        } else {
             throw new IllegalArgumentException("Base URL is not set in config or environment variables");
         }
-
         return baseUrl;
     }
 }

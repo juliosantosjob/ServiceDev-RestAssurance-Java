@@ -12,6 +12,8 @@ on:
 jobs:
   tests-api:
     runs-on: ubuntu-latest
+    env:
+      APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -25,8 +27,6 @@ jobs:
 
       - name: Run API Tests
         run: mvn clean test
-        env:
-          APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
 
       - name: Get Allure History
         uses: actions/checkout@v2
