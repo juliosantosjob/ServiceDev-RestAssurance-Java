@@ -2,9 +2,10 @@ package automation.dev.serverest.api.setupenv;
 
 public class Environment {
     private static String baseUrl;
-    private static String urlFromConfig = Config.get("app.base.url.hom");
 
     public static String getBaseUrl() {
+        String urlFromConfig = Config.get("app.base.url.hom");
+
         if (urlFromConfig != null) {
             baseUrl = urlFromConfig;
         } else {
