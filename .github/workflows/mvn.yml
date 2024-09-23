@@ -26,7 +26,7 @@ jobs:
       - name: Run API Tests
         if: always()
         env:
-          APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
+          HOM_BASE_URL: ${{ secrets.HOM_BASE_URL }}
         run: mvn clean test
 
       - name: Get Allure History

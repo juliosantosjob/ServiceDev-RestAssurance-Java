@@ -7,7 +7,8 @@ public class Reports {
 
     public static void attachmentsAllure(Response response) {
         if (response != null) {
-            String responseDetails = "Status Code: " + response.getStatusCode() + "\n" +
+            String responseDetails =
+                    "Status Code: " + response.getStatusCode() + "\n" +
                     "Headers: " + response.getHeaders().toString() + "\n" +
                     "Body: " + response.getBody().asString();
 

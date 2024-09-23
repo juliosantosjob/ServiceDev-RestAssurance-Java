@@ -1,7 +1,6 @@
 package automation.dev.serverest.api.usecases;
 
 import automation.dev.serverest.api.base.BaseTest;
-import automation.dev.serverest.api.models.NewUsersModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 

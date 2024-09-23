@@ -4,7 +4,6 @@ import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
 import com.github.javafaker.Faker;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 
 import static automation.dev.serverest.api.services.DeleteUsersService.deleteUser;
 import static automation.dev.serverest.api.services.GetUsersService.getUser;
