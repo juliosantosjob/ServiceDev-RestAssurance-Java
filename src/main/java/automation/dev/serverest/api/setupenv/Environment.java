@@ -1,10 +1,10 @@
 package automation.dev.serverest.api.setupenv;
 
 public class Environment {
-    public static String getBaseUrl() {
-        String environment = Config.get("app.environment");
-        String baseUrl = null;
+    private static String environment = Config.get("app.environment");
+    private static String baseUrl = "";
 
+    public static String getBaseUrl() {
         if ("dev".equalsIgnoreCase(environment)) {
             baseUrl = Config.get("app.base.url.dev");
         } else if ("hom".equalsIgnoreCase(environment)) {
