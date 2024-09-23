@@ -12,6 +12,7 @@ target/
 *.iml
 *.ipr
 allure-results
+allure-report
 src/main/resources/config.properties
 
 ### Eclipse ###

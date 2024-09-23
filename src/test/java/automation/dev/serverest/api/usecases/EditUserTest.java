@@ -12,26 +12,24 @@ import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.*;
 
 @Tag("regression")
-@Tag("edituserRegression")
+@Tag("editUserRegression")
 @DisplayName("Feature: Testes de Edição de Usuário")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EditUserTest extends BaseTest {
-    private NewUsersModel randomUsers = getRandomUser();
+    private NewUsersModel dynamicUser_;
     private Response response;
-    private String userId;
+    private String id_;
 
     @BeforeEach
-    public void initsetup() {
-        userId = createRandomUser(randomUsers)
-                .extract()
-                .path("_id")
-                .toString();
+    public void initSetup() {
+        dynamicUser_ = getRandomUser();
+        id_ = createAndGetRandomUserId(dynamicUser_);
     }
 
     @AfterEach
-    public void endsetup() {
-        deleteUserById(userId);
+    public void endSetup() {
+        deleteUserById(id_);
         attachmentsAllure(response);
     }
 
@@ -40,7 +38,7 @@ public class EditUserTest extends BaseTest {
     @Tag("editUserSuccess")
     @DisplayName("Cenario 01: Deve realizar edição com sucesso")
     public void editUserSuccessful() {
-        response = editUser(randomUsers, userId);
+        response = editUser(dynamicUser_, id_);
         response.then()
                 .statusCode(SC_OK)
                 .body("message", equalTo("Registro alterado com sucesso"));
@@ -51,8 +49,8 @@ public class EditUserTest extends BaseTest {
     @Tag("editUserInvalidData")
     @DisplayName("Cenario 02: Deve falhar ao realizar edição com todos os dados em branco")
     public void editUserWithInvalidData() {
-        NewUsersModel invalidUser = new NewUsersModel("", "", "", "");
-        response = editUser(invalidUser, userId);
+        dynamicUser_ = new NewUsersModel("", "", "", "");
+        response = editUser(dynamicUser_, id_);
         response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body("nome", equalTo("nome não pode ficar em branco"));
@@ -63,8 +61,8 @@ public class EditUserTest extends BaseTest {
     @Tag("editUserNonExistent")
     @DisplayName("Cenario 03: Deve criar um novo usuário ao tentar editar um usuário inexistente")
     public void editNonExistentUser() {
-        NewUsersModel someUser = getRandomUser();
-        response = editUser(someUser, "non_existent_id");
+        dynamicUser_ = getRandomUser();
+        response = editUser(dynamicUser_, "non_existent_id");
         response.then()
                 .statusCode(SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"));
@@ -75,8 +73,8 @@ public class EditUserTest extends BaseTest {
     @Tag("editUserNullFields")
     @DisplayName("Cenario 04: Deve falhar ao realizar edição com campos nulos")
     public void editUserWithNullFields() {
-        NewUsersModel nullFieldsUser = new NewUsersModel(null, null, null, null);
-        response = editUser(nullFieldsUser, userId);
+        dynamicUser_ = new NewUsersModel(null, null, null, null);
+        response = editUser(dynamicUser_, id_);
         response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body("nome", equalTo("nome deve ser uma string"))

@@ -3,9 +3,11 @@ package automation.dev.serverest.api.utils;
 import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
 import com.github.javafaker.Faker;
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 import static automation.dev.serverest.api.services.DeleteUsersService.deleteUser;
+import static automation.dev.serverest.api.services.GetUsersService.getUser;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
@@ -25,7 +27,7 @@ public class Helpers extends BaseTest {
         return newUser;
     }
 
-    public static ValidatableResponse createRandomUser(NewUsersModel newUsers) {
+    public static String createAndGetRandomUserId(NewUsersModel newUsers) {
         return requester
                 .body(newUsers)
                 .when()
@@ -33,14 +35,23 @@ public class Helpers extends BaseTest {
                 .then()
                 .statusCode(SC_CREATED)
                 .body(is(notNullValue()))
-                .body("_id", notNullValue());
+                .body("_id", notNullValue())
+                .extract()
+                .path("_id")
+                .toString();
+    }
+
+    public static Response getUserList() {
+        return getUser()
+                .then()
+                .statusCode(SC_OK)
+                .extract()
+                .response();
     }
 
     public static void deleteUserById(String userId) {
         if (userId != null) {
-            deleteUser(userId)
-                    .then()
-                    .statusCode(SC_OK);
+            deleteUser(userId).then().statusCode(SC_OK);
         }
     }
 }
