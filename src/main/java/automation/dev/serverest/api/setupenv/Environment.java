@@ -2,13 +2,16 @@ package automation.dev.serverest.api.setupenv;
 
 public class Environment {
     private static String baseUrl;
+    private static String urlFromConfig = Config.get("app.base.url.hom");
 
     public static String getBaseUrl() {
-
-        if (Config.get("app.base.url.hom") == null) {
-            baseUrl = System.getenv("APP_BASE_URL");
+        if (urlFromConfig != null) {
+            baseUrl = urlFromConfig;
         } else {
-            System.out.println("Base URL Env must be defined!");
+            baseUrl = System.getenv("APP_BASE_URL");
+            if (baseUrl == null) {
+                throw new RuntimeException("APP_BASE_URL environment variable not defined!");
+            }
         }
         return baseUrl;
     }
