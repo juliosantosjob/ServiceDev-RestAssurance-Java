@@ -25,6 +25,8 @@ jobs:
 
       - name: Run API Tests
         run: mvn test
+        env:
+          APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
 
       - name: Get Allure History
         uses: actions/checkout@v2
