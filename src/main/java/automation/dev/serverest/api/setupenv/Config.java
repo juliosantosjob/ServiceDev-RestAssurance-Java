@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.utils;
+package automation.dev.serverest.api.setupenv;
 
 import java.io.IOException;
 import java.io.InputStream;

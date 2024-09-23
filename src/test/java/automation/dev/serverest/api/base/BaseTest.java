@@ -1,6 +1,6 @@
-package automation.dev.serverest.api.support;
+package automation.dev.serverest.api.base;
 
-import automation.dev.serverest.api.utils.Routes;
+import automation.dev.serverest.api.setupenv.Routes;
 import io.restassured.RestAssured;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.config.LogConfig;

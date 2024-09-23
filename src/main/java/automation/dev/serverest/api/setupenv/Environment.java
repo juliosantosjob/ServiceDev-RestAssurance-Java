@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.utils;
+package automation.dev.serverest.api.setupenv;
 
 public class Environment {
     public static String getBaseUrl() {

@@ -1,38 +1,29 @@
-package automation.dev.serverest.api.tests;
+package automation.dev.serverest.api.usecases;
 
-import automation.dev.serverest.api.support.BaseTest;
+import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
-import com.github.javafaker.Faker;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
-import static automation.dev.serverest.api.requests.EditUserRequest.editUser;
-import static automation.dev.serverest.api.requests.RegisterUsersRequest.registerUser;
-import static automation.dev.serverest.api.requests.DeleteUsersRequest.deleteUser;
+import static automation.dev.serverest.api.services.EditUserService.editUser;
+import static automation.dev.serverest.api.utils.Helpers.*;
+import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.*;
 
 @Tag("regression")
+@Tag("edituserRegression")
 @DisplayName("Feature: Testes de Edição de Usuário")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EditUserTest extends BaseTest {
-    private NewUsersModel newUsers;
-    private final Faker faker = new Faker();
+    private NewUsersModel randomUsers = getRandomUser();
+    private Response response;
     private String userId;
 
     @BeforeEach
     public void initsetup() {
-        newUsers = new NewUsersModel(
-                faker.name().firstName(),
-                faker.internet().emailAddress(),
-                faker.internet().password(),
-                Boolean.toString(true));
-
-        userId = registerUser(newUsers)
-                .then()
-                .statusCode(SC_CREATED)
-                .body(is(notNullValue()))
-                .body("_id", notNullValue())
+        userId = createRandomUser(randomUsers)
                 .extract()
                 .path("_id")
                 .toString();
@@ -40,10 +31,8 @@ public class EditUserTest extends BaseTest {
 
     @AfterEach
     public void endsetup() {
-        if (userId != null) {
-            deleteUser(userId).then()
-                    .statusCode(SC_OK);
-        }
+        deleteUserById(userId);
+        attachmentsAllure(response);
     }
 
     @Test
@@ -51,14 +40,8 @@ public class EditUserTest extends BaseTest {
     @Tag("editUserSuccess")
     @DisplayName("Cenario 01: Deve realizar edição com sucesso")
     public void editUserSuccessful() {
-        NewUsersModel updatedUser = new NewUsersModel(
-                faker.name().firstName(),
-                faker.internet().emailAddress(),
-                faker.internet().password(),
-                Boolean.toString(false));
-
-        editUser(updatedUser, userId)
-                .then()
+        response = editUser(randomUsers, userId);
+        response.then()
                 .statusCode(SC_OK)
                 .body("message", equalTo("Registro alterado com sucesso"));
     }
@@ -69,8 +52,8 @@ public class EditUserTest extends BaseTest {
     @DisplayName("Cenario 02: Deve falhar ao realizar edição com todos os dados em branco")
     public void editUserWithInvalidData() {
         NewUsersModel invalidUser = new NewUsersModel("", "", "", "");
-        editUser(invalidUser, userId)
-                .then()
+        response = editUser(invalidUser, userId);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body("nome", equalTo("nome não pode ficar em branco"));
     }
@@ -80,14 +63,9 @@ public class EditUserTest extends BaseTest {
     @Tag("editUserNonExistent")
     @DisplayName("Cenario 03: Deve criar um novo usuário ao tentar editar um usuário inexistente")
     public void editNonExistentUser() {
-        NewUsersModel someUser = new NewUsersModel(
-                faker.name().firstName(),
-                faker.internet().emailAddress(),
-                faker.internet().password(),
-                Boolean.toString(true));
-
-        editUser(someUser, "non-existent-id")
-                .then()
+        NewUsersModel someUser = getRandomUser();
+        response = editUser(someUser, "non_existent_id");
+        response.then()
                 .statusCode(SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"));
     }
@@ -98,8 +76,8 @@ public class EditUserTest extends BaseTest {
     @DisplayName("Cenario 04: Deve falhar ao realizar edição com campos nulos")
     public void editUserWithNullFields() {
         NewUsersModel nullFieldsUser = new NewUsersModel(null, null, null, null);
-        editUser(nullFieldsUser, userId)
-                .then()
+        response = editUser(nullFieldsUser, userId);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body("nome", equalTo("nome deve ser uma string"))
                 .body("email", equalTo("email deve ser uma string"))

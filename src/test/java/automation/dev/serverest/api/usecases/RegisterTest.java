@@ -1,12 +1,12 @@
-package automation.dev.serverest.api.tests;
+package automation.dev.serverest.api.usecases;
 
-import automation.dev.serverest.api.support.BaseTest;
+import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.*;
 
-import static automation.dev.serverest.api.requests.DeleteUsersRequest.deleteUser;
-import static automation.dev.serverest.api.requests.RegisterUsersRequest.registerUser;
+import static automation.dev.serverest.api.services.DeleteUsersService.deleteUser;
+import static automation.dev.serverest.api.services.RegisterUsersService.registerUser;
+import static automation.dev.serverest.api.utils.Helpers.getRandomUser;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.*;
 
@@ -16,16 +16,11 @@ import static org.hamcrest.Matchers.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RegisterTest extends BaseTest {
     private NewUsersModel newUsers;
-    private final Faker faker = new Faker();
     private String userId;
 
     @BeforeEach
     public void initsetup() {
-        newUsers = new NewUsersModel(
-                faker.name().firstName(),
-                faker.internet().emailAddress(),
-                faker.internet().password(),
-                Boolean.toString(true));
+        newUsers = getRandomUser();
     }
 
     @AfterEach
@@ -39,7 +34,7 @@ public class RegisterTest extends BaseTest {
     @Test
     @Order(1)
     @Tag("registerSuccess")
-    @DisplayName("Cenario 01: Deve realizar cadastro com sucesso ")
+    @DisplayName("Cenario 01: Deve realizar cadastro com sucesso")
     public void registrationSuccessful() {
         userId = registerUser(newUsers)
                 .then()
@@ -57,8 +52,7 @@ public class RegisterTest extends BaseTest {
     @Tag("registerFailure")
     @DisplayName("Cenario 02: Deve falhar ao realizar cadastro com e-mail inválido")
     public void registrationWithInvalidEmail() {
-        newUsers.setEmail(faker.internet().emailAddress()
-                .replace("@", ""));
+        newUsers.setEmail("invalid_email");
         registerUser(newUsers)
                 .then()
                 .statusCode(SC_BAD_REQUEST)

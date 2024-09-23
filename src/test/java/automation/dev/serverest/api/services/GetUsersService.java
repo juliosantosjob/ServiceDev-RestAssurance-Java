@@ -1,9 +1,9 @@
-package automation.dev.serverest.api.requests;
+package automation.dev.serverest.api.services;
 
-import automation.dev.serverest.api.support.BaseTest;
+import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
 
-public class GetUsersRequest extends BaseTest {
+public class GetUsersService extends BaseTest {
 
     /**
      * Método para obter todos os usuários

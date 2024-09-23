@@ -1,20 +1,15 @@
-package automation.dev.serverest.api.tests;
+package automation.dev.serverest.api.usecases;
 
-import automation.dev.serverest.api.support.BaseTest;
+import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.LoginModel;
-
 import automation.dev.serverest.api.models.NewUsersModel;
-import com.github.javafaker.Faker;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
-import static automation.dev.serverest.api.requests.DeleteUsersRequest.deleteUser;
-import static automation.dev.serverest.api.requests.LoginRequest.loginUser;
-import static automation.dev.serverest.api.requests.RegisterUsersRequest.registerUser;
+import static automation.dev.serverest.api.services.LoginUserService.loginUser;
+import static automation.dev.serverest.api.utils.Helpers.*;
 import static org.apache.http.HttpStatus.*;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.startsWith;
+import static org.hamcrest.Matchers.*;
 
 @Tag("regression")
 @DisplayName("Feature: Teste de Login de Usuário")
@@ -23,32 +18,25 @@ import static org.hamcrest.Matchers.startsWith;
 public class LoginTest extends BaseTest {
     private NewUsersModel newUsers;
     private LoginModel credential;
-    private final Faker faker = new Faker();
+    private Response response;
     private String id_;
 
     @BeforeEach
     public void initsetup() {
-        newUsers = new NewUsersModel(
-                faker.name().firstName(),
-                faker.internet().emailAddress(),
-                faker.internet().password(),
-                Boolean.toString(true)
-        );
+        newUsers = getRandomUser();
         credential = new LoginModel(
                 newUsers.getEmail(),
                 newUsers.getPassword()
         );
-        id_ = registerUser(newUsers)
-                .then()
+        id_ = createRandomUser(newUsers)
                 .extract()
                 .path("_id")
                 .toString();
     }
 
-    @AfterAll
+    @AfterEach
     public void endsetup() {
-        deleteUser(id_).then()
-                .statusCode(SC_OK);
+        deleteUserById(id_);
     }
 
     @Test
@@ -56,8 +44,8 @@ public class LoginTest extends BaseTest {
     @Tag("loginSuccess")
     @DisplayName("Cenario 01: Deve realizar login com sucesso")
     public void loginSuccessful() {
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_OK)
                 .body(is(notNullValue()))
                 .body("message", equalTo("Login realizado com sucesso"))
@@ -71,8 +59,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Cenario 02: Não deve realizar login com email invalido")
     public void loginWithInvalidEmail() {
         credential.setEmail("invalid_email");
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("email", equalTo("email deve ser um email válido"));
@@ -84,8 +72,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Cenario 03: Não deve realizar login com email vazio")
     public void loginWithEmptyEmail() {
         credential.setEmail("");
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("email", equalTo("email não pode ficar em branco"));
@@ -97,8 +85,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Cenario 04: Não deve realizar login com senha inválida")
     public void loginWithInvalidPassword() {
         credential.setPassword("invalid_password");
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_UNAUTHORIZED)
                 .body("message", equalTo("Email e/ou senha inválidos"));
     }
@@ -109,8 +97,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Cenario 05: Não deve realizar login com senha vazia")
     public void loginWithEmptyPassword() {
         credential.setPassword("");
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("password", equalTo("password não pode ficar em branco"));
@@ -123,8 +111,8 @@ public class LoginTest extends BaseTest {
     public void loginWithEmptyCredentials() {
         credential.setEmail("");
         credential.setPassword("");
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("email", equalTo("email não pode ficar em branco"))
@@ -138,8 +126,8 @@ public class LoginTest extends BaseTest {
     public void loginWithSpacesInCredentials() {
         credential.setEmail(" name@example.com ");
         credential.setPassword(" senha123 ");
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("email", equalTo("email deve ser um email válido"));
@@ -151,8 +139,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Cenario 08: Não deve realizar login com email nulo")
     public void loginWithNullEmail() {
         credential.setEmail(null);
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("email", equalTo("email deve ser uma string"));
@@ -164,8 +152,8 @@ public class LoginTest extends BaseTest {
     @DisplayName("Cenario 09: Não deve realizar login com senha nula")
     public void loginWithNullPassword() {
         credential.setPassword(null);
-        loginUser(credential)
-                .then()
+        response = loginUser(credential);
+        response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("password", equalTo("password deve ser uma string"));

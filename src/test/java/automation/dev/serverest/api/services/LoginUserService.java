@@ -1,10 +1,10 @@
-package automation.dev.serverest.api.requests;
+package automation.dev.serverest.api.services;
 
-import automation.dev.serverest.api.support.BaseTest;
+import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.LoginModel;
 import io.restassured.response.Response;
 
-public class LoginRequest extends BaseTest {
+public class LoginUserService extends BaseTest {
 
     /**
      * Método para realizar login de um usuário

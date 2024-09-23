@@ -1,10 +1,10 @@
-package automation.dev.serverest.api.requests;
+package automation.dev.serverest.api.services;
 
-import automation.dev.serverest.api.support.BaseTest;
+import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
 import io.restassured.response.Response;
 
-public class RegisterUsersRequest extends BaseTest {
+public class RegisterUsersService extends BaseTest {
 
     /**
      * Método para registrar um novo usuário

@@ -1,8 +1,6 @@
-package automation.dev.serverest.api.tests;
+package automation.dev.serverest.api.usecases;
 
-import automation.dev.serverest.api.support.BaseTest;
-import io.qameta.allure.Description;
-import io.qameta.allure.Story;
+import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
@@ -10,9 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static automation.dev.serverest.api.requests.GetUsersRequest.getUser;
+import static automation.dev.serverest.api.services.GetUsersService.getUser;
 import static org.apache.http.HttpStatus.SC_OK;
-import static org.hamcrest.Matchers.*;
 
 @Tag("regression")
 @DisplayName("Feature: Teste de Obtenção de Usuário")
@@ -27,12 +24,11 @@ public class GetUserTest extends BaseTest {
         List<Map<String, Object>> usuarios = response.jsonPath().getList("usuarios");
 
         int randomIndex = new Random().nextInt(usuarios.size());
-        getUser()
-                .then()
-                .statusCode(SC_OK)
-                .body("usuarios[" + randomIndex + "].nome", notNullValue())
-                .body("usuarios[" + randomIndex + "].email", notNullValue())
-                .body("usuarios[" + randomIndex + "].password", notNullValue())
-                .body("usuarios[" + randomIndex + "].administrador", notNullValue());
+        Map<String, Object> selectedUser = usuarios.get(randomIndex);
+
+        Assertions.assertNotNull(selectedUser.get("nome"));
+        Assertions.assertNotNull(selectedUser.get("email"));
+        Assertions.assertNotNull(selectedUser.get("password"));
+        Assertions.assertNotNull(selectedUser.get("administrador"));
     }
 }

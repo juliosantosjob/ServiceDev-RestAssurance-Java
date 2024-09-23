@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.utils;
+package automation.dev.serverest.api.setupenv;
 
 public interface Routes {
     String APP_BASE_URL = Environment.getBaseUrl();
