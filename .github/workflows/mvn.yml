@@ -24,7 +24,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Run API Tests
-        run: mvn test
+        run: mvn clean test
         env:
           APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
 
