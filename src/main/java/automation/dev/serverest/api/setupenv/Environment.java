@@ -5,7 +5,7 @@ import java.security.InvalidParameterException;
 import static java.lang.System.getProperty;
 
 public class Environment {
-    private static final String CURRENT_ENVIRONMENT = getProperty("env", "hom-act");
+    private static final String CURRENT_ENVIRONMENT = getProperty("env", "hom");
 
     public static String getBaseUrl() {
         switch (CURRENT_ENVIRONMENT) {
