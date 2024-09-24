@@ -50,6 +50,6 @@ public class GetUserTest extends BaseTest {
         response = getUserList();
         response.then()
                 .statusCode(SC_OK)
-                .body(matchesJsonSchemaInClasspath("contracts/getUserSchema.json")); // Ajuste o caminho conforme necessário
+                .body(matchesJsonSchemaInClasspath("contracts/getUserSchema.json"));
     }
 }
