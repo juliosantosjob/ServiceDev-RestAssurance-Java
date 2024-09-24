@@ -23,11 +23,6 @@ public class RegisterTest extends BaseTest {
     private String id_;
 
     @BeforeEach
-    public void initsetup() {
-        dynamicUser_ = getRandomUser();
-    }
-
-    @BeforeEach
     public void initSetup() {
         dynamicUser_ = getRandomUser();
         id_ = createAndGetRandomUserId(dynamicUser_);
