@@ -28,8 +28,7 @@ public class GetUsersService extends BaseTest {
 
     public static Response getUserById(String idUser) {
         try {
-            String endpoint = String.format("%s%s", USERS, idUser);
-            return requester.get(endpoint);
+            return requester.get(USERS.concat(idUser));
         } catch (Exception e) {
             throw new RuntimeException("Failed to get user by ID: " + e.getMessage());
         }

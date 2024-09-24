@@ -1,6 +1,5 @@
 package automation.dev.serverest.api.base;
 
-import automation.dev.serverest.api.setupenv.Environment;
 import automation.dev.serverest.api.setupenv.Routes;
 import io.restassured.RestAssured;
 import io.restassured.builder.ResponseSpecBuilder;
