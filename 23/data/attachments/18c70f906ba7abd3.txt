@@ -1,0 +1,16 @@
+Status Code: 400
+Headers: access-control-allow-origin=*
+x-dns-prefetch-control=off
+x-frame-options=SAMEORIGIN
+strict-transport-security=max-age=15552000; includeSubDomains
+x-download-options=noopen
+x-content-type-options=nosniff
+x-xss-protection=1; mode=block
+content-type=application/json; charset=utf-8
+X-Cloud-Trace-Context=e3dfec7e0cdc21f85f7928c72483afca
+Date=Tue, 24 Sep 2024 12:09:03 GMT
+Server=Google Frontend
+Content-Length=53
+Body: {
+    "message": "Este email já está sendo usado"
+}
