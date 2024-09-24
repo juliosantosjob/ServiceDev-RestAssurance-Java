@@ -32,6 +32,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junitJupiter.version}</version>
@@ -72,6 +78,7 @@
             <version>${jackson.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

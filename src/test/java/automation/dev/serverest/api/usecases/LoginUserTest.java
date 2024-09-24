@@ -9,6 +9,7 @@ import org.junit.jupiter.api.*;
 import static automation.dev.serverest.api.services.LoginUserService.loginUser;
 import static automation.dev.serverest.api.utils.Helpers.*;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.*;
 
@@ -26,10 +27,7 @@ public class LoginUserTest extends BaseTest {
     @BeforeEach
     public void initsetup() {
         dynamicUser_ = getRandomUser();
-        credentials = new LoginModel(
-                dynamicUser_.getEmail(),
-                dynamicUser_.getPassword()
-        );
+        credentials = getUserCredentials(dynamicUser_);
         id_ = createAndGetRandomUserId(dynamicUser_);
     }
 
@@ -157,5 +155,16 @@ public class LoginUserTest extends BaseTest {
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("password", equalTo("password deve ser uma string"));
+    }
+
+    @Test
+    @Order(10)
+    @Tag("loginSuccessContractValidation")
+    @DisplayName("Cenario 10: Deve validar o contrato de resposta ao realizar login com sucesso")
+    public void validateLoginSuccessContract() {
+        response = loginUser(credentials);
+        response.then()
+                .statusCode(SC_OK)
+                .body(matchesJsonSchemaInClasspath("contracts/loginSuccessSchema.json")); // Ajuste o caminho conforme necessário
     }
 }

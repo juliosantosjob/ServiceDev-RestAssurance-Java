@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
 import static automation.dev.serverest.api.services.EditUserService.editUser;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static automation.dev.serverest.api.utils.Helpers.*;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
 import static org.apache.http.HttpStatus.*;
@@ -82,4 +83,16 @@ public class EditUserTest extends BaseTest {
                 .body("password", equalTo("password deve ser uma string"))
                 .body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
     }
+
+    @Test
+    @Order(5)
+    @Tag("editUserContractValidation")
+    @DisplayName("Cenario 05: Deve validar o contrato de resposta ao editar usuário com sucesso")
+    public void validateEditUserContract() {
+        response = editUser(dynamicUser_, id_);
+        response.then()
+                .statusCode(SC_OK)
+                .body(matchesJsonSchemaInClasspath("contracts/editUserSchema.json"));
+    }
+
 }

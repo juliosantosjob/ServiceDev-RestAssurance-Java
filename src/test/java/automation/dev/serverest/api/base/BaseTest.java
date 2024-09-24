@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest implements Constants, Routes {
     protected static RequestSpecification requester;
-    protected String APP_BASE_URL = Environment.getBaseUrl();
 
     @BeforeEach
     public void setupRestAssured() {

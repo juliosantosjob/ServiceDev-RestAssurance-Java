@@ -10,6 +10,8 @@ import java.util.Random;
 
 import static automation.dev.serverest.api.utils.Helpers.*;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.apache.http.HttpStatus.SC_OK;
 
 @Tag("regression")
 @Tag("getUserRegression")
@@ -24,6 +26,7 @@ public class GetUserTest extends BaseTest {
     }
 
     @Test
+    @Order(1)
     @Tag("getUser")
     @DisplayName("Cenario 01: Deve obter um usuario na lista")
     public void getAUserInTheList() {
@@ -37,5 +40,16 @@ public class GetUserTest extends BaseTest {
         Assertions.assertNotNull(selectedUser.get("email"));
         Assertions.assertNotNull(selectedUser.get("password"));
         Assertions.assertNotNull(selectedUser.get("administrador"));
+    }
+
+    @Test
+    @Order(2)
+    @Tag("getUserContractValidation")
+    @DisplayName("Cenario 02: Deve validar o contrato de resposta ao obter um usuário na lista")
+    public void validateGetUserContract() {
+        response = getUserList();
+        response.then()
+                .statusCode(SC_OK)
+                .body(matchesJsonSchemaInClasspath("contracts/getUserSchema.json")); // Ajuste o caminho conforme necessário
     }
 }

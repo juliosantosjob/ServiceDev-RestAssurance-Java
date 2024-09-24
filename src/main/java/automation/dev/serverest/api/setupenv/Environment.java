@@ -1,28 +1,25 @@
 package automation.dev.serverest.api.setupenv;
 
+import java.security.InvalidParameterException;
+
 import static java.lang.System.getProperty;
 
 public class Environment {
-    private static String mainEnv = getProperty("env", "hom-act");
+    private static final String CURRENT_ENVIRONMENT = getProperty("env", "hom-act");
 
     public static String getBaseUrl() {
-        String baseUrl = null;
-
-        switch (mainEnv) {
+        switch (CURRENT_ENVIRONMENT) {
             case "dev":
-                baseUrl = Config.get("app.base.url.dev");
-                break;
+                return Config.get("app.base.url.dev");
             case "hom":
-                baseUrl = Config.get("app.base.url.hom");
-                break;
+                return Config.get("app.base.url.hom");
+            case "dev-act":
+                return System.getenv("DEV_URL");
             case "hom-act":
-                baseUrl = System.getenv("HOM_BASE_URL");
-                break;
+                return System.getenv("HOM_URL");
+            default:
+                throw new InvalidParameterException("Invalid environment: " + CURRENT_ENVIRONMENT +
+                        ". Available options are \"dev\", \"hom\", \"dev-act\", \"hom-act\".");
         }
-
-        if (baseUrl == null || baseUrl.isEmpty()) {
-            throw new IllegalArgumentException("Base URL is not set in config or environment variables");
-        }
-        return baseUrl;
     }
 }

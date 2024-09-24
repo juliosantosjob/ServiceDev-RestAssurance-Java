@@ -1,12 +1,14 @@
 package automation.dev.serverest.api.utils;
 
 import automation.dev.serverest.api.base.BaseTest;
+import automation.dev.serverest.api.models.LoginModel;
 import automation.dev.serverest.api.models.NewUsersModel;
 import com.github.javafaker.Faker;
 import io.restassured.response.Response;
 
 import static automation.dev.serverest.api.services.DeleteUsersService.deleteUser;
 import static automation.dev.serverest.api.services.GetUsersService.getUser;
+import static automation.dev.serverest.api.services.RegisterUsersService.registerUser;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
@@ -26,11 +28,17 @@ public class Helpers extends BaseTest {
         return newUser;
     }
 
+    public static LoginModel getUserCredentials(NewUsersModel newUser) {
+        LoginModel login = new LoginModel(
+                newUser.getEmail(),
+                newUser.getPassword()
+        );
+
+        return login;
+    }
+
     public static String createAndGetRandomUserId(NewUsersModel newUsers) {
-        return requester
-                .body(newUsers)
-                .when()
-                .post(USERS)
+        return registerUser(newUsers)
                 .then()
                 .statusCode(SC_CREATED)
                 .body(is(notNullValue()))

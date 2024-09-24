@@ -8,6 +8,7 @@ import org.junit.jupiter.api.*;
 import static automation.dev.serverest.api.services.RegisterUsersService.registerUser;
 import static automation.dev.serverest.api.utils.Helpers.*;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.*;
 
@@ -56,8 +57,7 @@ public class RegisterTest extends BaseTest {
     @DisplayName("Cenario 02: Deve falhar ao realizar cadastro com e-mail inválido")
     public void registrationWithInvalidEmail() {
         dynamicUser_.setEmail("invalid_email");
-        Response response = registerUser(dynamicUser_);
-
+        response = registerUser(dynamicUser_);
         response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
@@ -70,7 +70,7 @@ public class RegisterTest extends BaseTest {
     @DisplayName("Cenario 03: Deve falhar ao realizar cadastro com nome em branco")
     public void registrationWithEmptyName() {
         dynamicUser_.setNome("");
-        Response response = registerUser(dynamicUser_);
+        response = registerUser(dynamicUser_);
         response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
@@ -83,7 +83,7 @@ public class RegisterTest extends BaseTest {
     @DisplayName("Cenario 04: Deve falhar ao realizar cadastro com email em branco")
     public void registrationWithEmptyEmail() {
         dynamicUser_.setEmail("");
-        Response response = registerUser(dynamicUser_);
+        response = registerUser(dynamicUser_);
         response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
@@ -96,10 +96,21 @@ public class RegisterTest extends BaseTest {
     @DisplayName("Cenario 05: Deve falhar ao realizar cadastro com senha em branco")
     public void registrationWithEmptyPassword() {
         dynamicUser_.setPassword("");
-        Response response = registerUser(dynamicUser_);
+        response = registerUser(dynamicUser_);
         response.then()
                 .statusCode(SC_BAD_REQUEST)
                 .body(is(notNullValue()))
                 .body("password", equalTo("password não pode ficar em branco"));
+    }
+
+    @Test
+    @Order(6)
+    @Tag("registerSuccessContractValidation")
+    @DisplayName("Cenario 06: Deve validar o contrato de resposta ao realizar cadastro com sucesso")
+    public void validateRegistrationSuccessContract() {
+        response = registerUser(dynamicUser_);
+        response.then()
+                .statusCode(SC_CREATED)
+                .body(matchesJsonSchemaInClasspath("contracts/registerSuccessSchema.json"));
     }
 }
