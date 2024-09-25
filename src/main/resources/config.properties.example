@@ -1,5 +1,2 @@
-# Ambiente de Desenvolvimento
-app.base.url.dev=https://dev.example.com
-
 # Ambiente de Homologação
 app.base.url.hom=https://hom.example.com

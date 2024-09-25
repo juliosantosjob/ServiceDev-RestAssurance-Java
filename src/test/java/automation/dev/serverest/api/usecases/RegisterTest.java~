@@ -112,12 +112,14 @@ public class RegisterTest extends BaseTest {
     @Tag("registerSuccessContractValidation")
     @DisplayName("Cenario 06: Deve validar o contrato de resposta ao realizar cadastro com sucesso")
     public void validateRegistrationSuccessContract() {
+
         dynamicUser_ = getRandomUser();
         response = registerUser(dynamicUser_);
         response.then()
                 .statusCode(SC_CREATED)
                 .body(matchesJsonSchemaInClasspath("contracts/registerSuccessSchema.json"));
 
+        // To delete user after test to not dirty the database
         String idUser = response
                 .jsonPath()
                 .getString("id");
