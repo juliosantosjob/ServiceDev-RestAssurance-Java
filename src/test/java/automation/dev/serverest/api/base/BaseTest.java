@@ -13,6 +13,11 @@ public class BaseTest implements Constants, Routes {
 
     @BeforeEach
     public void setupRestAssured() {
+        if (APP_BASE_URL == null) {
+            System.err.println("*** Please, create the .config.properties file " +
+                    "and set \"app.base.url.hom\" environment variable ***");
+        }
+
         requester = RestAssured.given()
                 .baseUri(APP_BASE_URL)
                 .header("Content-Type", Constants.CONTENT_TYPE);

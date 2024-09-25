@@ -46,12 +46,14 @@ public class RegisterTest extends BaseTest {
         response.then()
                 .statusCode(SC_CREATED)
                 .body(is(notNullValue()))
-                .body("message", equalTo("Cadastro realizado com sucesso"));
+                .body("message", equalTo("Cadastro realizado com sucesso"))
+                .body("_id", is(notNullValue()));
+
 
         // To delete user after test to not dirty the database
         String idUser = response
                 .jsonPath()
-                .getString("id");
+                .getString("_id");
         deleteUserById(idUser);
     }
 
