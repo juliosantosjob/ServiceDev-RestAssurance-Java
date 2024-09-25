@@ -1,0 +1,16 @@
+Status Code: 400
+Headers: access-control-allow-origin=*
+x-dns-prefetch-control=off
+x-frame-options=SAMEORIGIN
+strict-transport-security=max-age=15552000; includeSubDomains
+x-download-options=noopen
+x-content-type-options=nosniff
+x-xss-protection=1; mode=block
+content-type=application/json; charset=utf-8
+X-Cloud-Trace-Context=8f1e17c323969c6d6d4f7d09d8f0b366
+Date=Wed, 25 Sep 2024 13:55:30 GMT
+Server=Google Frontend
+Content-Length=48
+Body: {
+    "nome": "nome não pode ficar em branco"
+}
