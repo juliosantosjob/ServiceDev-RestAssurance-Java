@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Mon Sep 23 17:32:29 GMT 2024","Mon Sep 23 17:32:29 GMT 2024","1","","Feature: Teste de Login de Usuário","","automation.dev.serverest.api.usecases.LoginUserTest","","Feature: Teste de Login de Usuário",""
-"broken","Mon Sep 23 17:32:29 GMT 2024","Mon Sep 23 17:32:29 GMT 2024","0","","Feature: Testes de Edição de Usuário","","automation.dev.serverest.api.usecases.EditUserTest","","Feature: Testes de Edição de Usuário",""
-"broken","Mon Sep 23 17:32:29 GMT 2024","Mon Sep 23 17:32:29 GMT 2024","14","","Feature: Teste de Obtenção de Usuário","","automation.dev.serverest.api.usecases.GetUserTest","getAUserInTheList","Cenario 01: Deve obter um usuario na lista",""
-"broken","Mon Sep 23 17:32:29 GMT 2024","Mon Sep 23 17:32:29 GMT 2024","0","","Feature: Teste de Cadastro de Usuário","","automation.dev.serverest.api.usecases.RegisterTest","","Feature: Teste de Cadastro de Usuário",""
