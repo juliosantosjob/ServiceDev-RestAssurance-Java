@@ -15,6 +15,7 @@ allure-results
 allure-report
 reports
 src/main/resources/config.properties
+*~
 
 ### Eclipse ###
 .apt_generated
