@@ -1,0 +1,137 @@
+Status Code: 200
+Headers: access-control-allow-origin=*
+x-dns-prefetch-control=off
+x-frame-options=SAMEORIGIN
+strict-transport-security=max-age=15552000; includeSubDomains
+x-download-options=noopen
+x-content-type-options=nosniff
+x-xss-protection=1; mode=block
+content-type=application/json; charset=utf-8
+X-Cloud-Trace-Context=77f92c9c06979f1f5b25cca1adbd566c
+Date=Fri, 27 Sep 2024 20:19:05 GMT
+Server=Google Frontend
+Content-Length=3612
+Body: {
+    "quantidade": 17,
+    "usuarios": [
+        {
+            "nome": "Fulano da Silva",
+            "email": "fulano@qa.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "0uxuPY0cbmQhpEz1"
+        },
+        {
+            "nome": "Alicia",
+            "email": "burt.fay@yahoo.com",
+            "password": "k6f1gfyk",
+            "administrador": "true",
+            "_id": "3irBFdbEOwLJFqII"
+        },
+        {
+            "nome": "Kaio",
+            "email": "kaio@example.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "6vgXqrrp9IV09gI1"
+        },
+        {
+            "nome": "Gabrielle",
+            "email": "gabrielle@example.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "DSoNF0Fggl7oFnlS"
+        },
+        {
+            "nome": "nome cliente",
+            "email": "email@qa.com.br",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "JuWm8sM5trJAGg7C"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "beltrano@qa.com.br",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "LWDuursQwhJPIR5W"
+        },
+        {
+            "nome": "Jennifer Walker",
+            "email": "hyoung@example.org",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "NFU0TF8dA3WOIzdM"
+        },
+        {
+            "nome": "Lena Schowalter",
+            "email": "Erich.Sipes@yahoo.com",
+            "password": "ZIgfvflohYcU74b",
+            "administrador": "true",
+            "_id": "Y7Ja4QBL0sWuhYOF"
+        },
+        {
+            "nome": "teste",
+            "email": "teste@teste.com",
+            "password": "12345",
+            "administrador": "true",
+            "_id": "ZWT20yRVOk7W7iaI"
+        },
+        {
+            "nome": "Dr. Courtney Kohler",
+            "email": "Devante.Kunde59@hotmail.com",
+            "password": "P1ib9XpyHbj8rRA",
+            "administrador": "true",
+            "_id": "aZElISBssNiysuUk"
+        },
+        {
+            "nome": "Frankie Franey",
+            "email": "Gerhard73@gmail.com",
+            "password": "FOFlYcdjMJocqCJ",
+            "administrador": "true",
+            "_id": "gr9E6OLYMjJVxTul"
+        },
+        {
+            "nome": "carlos",
+            "email": "teste07@TESTE7.com",
+            "password": "12345",
+            "administrador": "false",
+            "_id": "kRXpx5ADCKux4TDp"
+        },
+        {
+            "nome": "teste4",
+            "email": "teste4@teste.com",
+            "password": "1234",
+            "administrador": "true",
+            "_id": "ndJLsYhFpXLsjdJk"
+        },
+        {
+            "nome": "Francis Kris",
+            "email": "Novella7@yahoo.com",
+            "password": "DnSKs7aPuQi82OK",
+            "administrador": "true",
+            "_id": "odogYEaFvlt39lu6"
+        },
+        {
+            "nome": "Carmina",
+            "email": "tommie.reilly@hotmail.com",
+            "password": "qxeqokfdsfmk",
+            "administrador": "true",
+            "_id": "r8EmKqBZmEUCMjVW"
+        },
+        {
+            "nome": "carlos",
+            "email": "teste0655@teste6.com",
+            "password": "1234",
+            "administrador": "false",
+            "_id": "xQpqe6ihW91XbpRq"
+        },
+        {
+            "nome": "teste",
+            "email": "teste@hotmail.com",
+            "password": "12345",
+            "administrador": "true",
+            "_id": "yvTdaK9F6HBqIlP7"
+        }
+    ]
+}
