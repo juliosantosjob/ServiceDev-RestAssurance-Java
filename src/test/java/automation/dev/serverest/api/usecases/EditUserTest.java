@@ -3,14 +3,28 @@ package automation.dev.serverest.api.usecases;
 import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.BeforeEach;
 
 import static automation.dev.serverest.api.services.EditUserService.editUser;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static automation.dev.serverest.api.utils.Helpers.*;
+import static automation.dev.serverest.api.utils.Helpers.getRandomUser;
+import static automation.dev.serverest.api.utils.Helpers.createAndGetRandomUserId;
+import static automation.dev.serverest.api.utils.Helpers.deleteUserById;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
-import static org.apache.http.HttpStatus.*;
-import static org.hamcrest.Matchers.*;
+
+import static org.apache.http.HttpStatus.SC_OK;
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
+import static org.apache.http.HttpStatus.SC_CREATED;
+
+import static org.hamcrest.Matchers.equalTo;
 
 @Tag("regression")
 @Tag("editUserRegression")
@@ -40,9 +54,7 @@ public class EditUserTest extends BaseTest {
     @DisplayName("Cenario 01: Deve realizar edição com sucesso")
     public void editUserSuccessful() {
         response = editUser(dynamicUser_, id_);
-        response.then()
-                .statusCode(SC_OK)
-                .body("message", equalTo("Registro alterado com sucesso"));
+        response.then().statusCode(SC_OK).body("message", equalTo("Registro alterado com sucesso"));
     }
 
     @Test
@@ -52,9 +64,7 @@ public class EditUserTest extends BaseTest {
     public void editUserWithInvalidData() {
         dynamicUser_ = new NewUsersModel("", "", "", "");
         response = editUser(dynamicUser_, id_);
-        response.then()
-                .statusCode(SC_BAD_REQUEST)
-                .body("nome", equalTo("nome não pode ficar em branco"));
+        response.then().statusCode(SC_BAD_REQUEST).body("nome", equalTo("nome não pode ficar em branco"));
     }
 
     @Test
@@ -64,9 +74,7 @@ public class EditUserTest extends BaseTest {
     public void editNonExistentUser() {
         dynamicUser_ = getRandomUser();
         response = editUser(dynamicUser_, "non_existent_id");
-        response.then()
-                .statusCode(SC_CREATED)
-                .body("message", equalTo("Cadastro realizado com sucesso"));
+        response.then().statusCode(SC_CREATED).body("message", equalTo("Cadastro realizado com sucesso"));
     }
 
     @Test
@@ -76,12 +84,7 @@ public class EditUserTest extends BaseTest {
     public void editUserWithNullFields() {
         dynamicUser_ = new NewUsersModel(null, null, null, null);
         response = editUser(dynamicUser_, id_);
-        response.then()
-                .statusCode(SC_BAD_REQUEST)
-                .body("nome", equalTo("nome deve ser uma string"))
-                .body("email", equalTo("email deve ser uma string"))
-                .body("password", equalTo("password deve ser uma string"))
-                .body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
+        response.then().statusCode(SC_BAD_REQUEST).body("nome", equalTo("nome deve ser uma string")).body("email", equalTo("email deve ser uma string")).body("password", equalTo("password deve ser uma string")).body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
     }
 
     @Test
@@ -90,9 +93,7 @@ public class EditUserTest extends BaseTest {
     @DisplayName("Cenario 05: Deve validar o contrato de resposta ao editar usuário com sucesso")
     public void validateEditUserContract() {
         response = editUser(dynamicUser_, id_);
-        response.then()
-                .statusCode(SC_OK)
-                .body(matchesJsonSchemaInClasspath("contracts/editUserSchema.json"));
+        response.then().statusCode(SC_OK).body(matchesJsonSchemaInClasspath("contracts/editUserSchema.json"));
     }
 
 }

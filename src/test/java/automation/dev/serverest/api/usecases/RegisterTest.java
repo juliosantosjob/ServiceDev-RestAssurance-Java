@@ -3,15 +3,32 @@ package automation.dev.serverest.api.usecases;
 import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
 import io.restassured.path.json.JsonPath;
+
 import io.restassured.response.Response;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.BeforeEach;
 
 import static automation.dev.serverest.api.services.RegisterUsersService.registerUser;
-import static automation.dev.serverest.api.utils.Helpers.*;
+import static automation.dev.serverest.api.utils.Helpers.getRandomUser;
+import static automation.dev.serverest.api.utils.Helpers.createAndGetRandomUserId;
+import static automation.dev.serverest.api.utils.Helpers.deleteUserById;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.apache.http.HttpStatus.*;
-import static org.hamcrest.Matchers.*;
+
+import static org.apache.http.HttpStatus.SC_CREATED;
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 @Tag("regression")
 @Tag("registerRegression")
@@ -43,17 +60,11 @@ public class RegisterTest extends BaseTest {
     public void registrationSuccessful() {
         dynamicUser_ = getRandomUser();
         response = registerUser(dynamicUser_);
-        response.then()
-                .statusCode(SC_CREATED)
-                .body(is(notNullValue()))
-                .body("message", equalTo("Cadastro realizado com sucesso"))
-                .body("_id", is(notNullValue()));
+        response.then().statusCode(SC_CREATED).body(is(notNullValue())).body("message", equalTo("Cadastro realizado com sucesso")).body("_id", is(notNullValue()));
 
 
         // To delete user after test to not dirty the database
-        String idUser = response
-                .jsonPath()
-                .getString("_id");
+        String idUser = response.jsonPath().getString("_id");
         deleteUserById(idUser);
     }
 
@@ -64,10 +75,7 @@ public class RegisterTest extends BaseTest {
     public void registrationWithInvalidEmail() {
         dynamicUser_.setEmail("invalid_email");
         response = registerUser(dynamicUser_);
-        response.then()
-                .statusCode(SC_BAD_REQUEST)
-                .body(is(notNullValue()))
-                .body("email", equalTo("email deve ser um email válido"));
+        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("email", equalTo("email deve ser um email válido"));
     }
 
     @Test
@@ -77,10 +85,7 @@ public class RegisterTest extends BaseTest {
     public void registrationWithEmptyName() {
         dynamicUser_.setNome("");
         response = registerUser(dynamicUser_);
-        response.then()
-                .statusCode(SC_BAD_REQUEST)
-                .body(is(notNullValue()))
-                .body("nome", equalTo("nome não pode ficar em branco"));
+        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("nome", equalTo("nome não pode ficar em branco"));
     }
 
     @Test
@@ -90,10 +95,7 @@ public class RegisterTest extends BaseTest {
     public void registrationWithEmptyEmail() {
         dynamicUser_.setEmail("");
         response = registerUser(dynamicUser_);
-        response.then()
-                .statusCode(SC_BAD_REQUEST)
-                .body(is(notNullValue()))
-                .body("email", equalTo("email não pode ficar em branco"));
+        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("email", equalTo("email não pode ficar em branco"));
     }
 
     @Test
@@ -103,10 +105,7 @@ public class RegisterTest extends BaseTest {
     public void registrationWithEmptyPassword() {
         dynamicUser_.setPassword("");
         response = registerUser(dynamicUser_);
-        response.then()
-                .statusCode(SC_BAD_REQUEST)
-                .body(is(notNullValue()))
-                .body("password", equalTo("password não pode ficar em branco"));
+        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("password", equalTo("password não pode ficar em branco"));
     }
 
     @Test
@@ -116,13 +115,9 @@ public class RegisterTest extends BaseTest {
     public void validateRegistrationSuccessContract() {
         dynamicUser_ = getRandomUser();
         response = registerUser(dynamicUser_);
-        response.then()
-                .statusCode(SC_CREATED)
-                .body(matchesJsonSchemaInClasspath("contracts/registerSuccessSchema.json"));
+        response.then().statusCode(SC_CREATED).body(matchesJsonSchemaInClasspath("contracts/registerSuccessSchema.json"));
 
-        String idUser = response
-                .jsonPath()
-                .getString("id");
+        String idUser = response.jsonPath().getString("id");
         deleteUserById(idUser);
     }
 }

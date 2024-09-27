@@ -2,14 +2,22 @@ package automation.dev.serverest.api.usecases;
 
 import automation.dev.serverest.api.base.BaseTest;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static automation.dev.serverest.api.utils.Helpers.*;
+import static automation.dev.serverest.api.utils.Helpers.getUserList;
 import static automation.dev.serverest.api.utils.Reports.attachmentsAllure;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.apache.http.HttpStatus.SC_OK;
 
@@ -52,4 +60,5 @@ public class GetUserTest extends BaseTest {
                 .statusCode(SC_OK)
                 .body(matchesJsonSchemaInClasspath("contracts/getUserSchema.json"));
     }
+
 }
