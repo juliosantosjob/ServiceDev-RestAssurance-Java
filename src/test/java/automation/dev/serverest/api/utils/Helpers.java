@@ -31,8 +31,7 @@ public class Helpers extends BaseTest {
     public static LoginModel getUserCredentials(NewUsersModel newUser) {
         LoginModel login = new LoginModel(
                 newUser.getEmail(),
-                newUser.getPassword()
-        );
+                newUser.getPassword());
 
         return login;
     }
@@ -48,8 +47,6 @@ public class Helpers extends BaseTest {
                 .toString();
     }
 
-
-
     public static Response getUserList() {
         return getUser()
                 .then()
@@ -60,7 +57,9 @@ public class Helpers extends BaseTest {
 
     public static void deleteUserById(String userId) {
         if (userId != null) {
-            deleteUser(userId).then().statusCode(SC_OK);
+            deleteUser(userId)
+                    .then()
+                    .statusCode(SC_OK);
         }
     }
 }
