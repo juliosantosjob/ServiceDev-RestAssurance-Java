@@ -54,7 +54,9 @@ public class EditUserTest extends BaseTest {
     @DisplayName("Cenario 01: Deve realizar edição com sucesso")
     public void editUserSuccessful() {
         response = editUser(dynamicUser_, id_);
-        response.then().statusCode(SC_OK).body("message", equalTo("Registro alterado com sucesso"));
+        response.then()
+                .statusCode(SC_OK)
+                .body("message", equalTo("Registro alterado com sucesso"));
     }
 
     @Test
@@ -64,7 +66,9 @@ public class EditUserTest extends BaseTest {
     public void editUserWithInvalidData() {
         dynamicUser_ = new NewUsersModel("", "", "", "");
         response = editUser(dynamicUser_, id_);
-        response.then().statusCode(SC_BAD_REQUEST).body("nome", equalTo("nome não pode ficar em branco"));
+        response.then()
+                .statusCode(SC_BAD_REQUEST)
+                .body("nome", equalTo("nome não pode ficar em branco"));
     }
 
     @Test
@@ -74,7 +78,9 @@ public class EditUserTest extends BaseTest {
     public void editNonExistentUser() {
         dynamicUser_ = getRandomUser();
         response = editUser(dynamicUser_, "non_existent_id");
-        response.then().statusCode(SC_CREATED).body("message", equalTo("Cadastro realizado com sucesso"));
+        response.then()
+                .statusCode(SC_CREATED)
+                .body("message", equalTo("Cadastro realizado com sucesso"));
     }
 
     @Test
@@ -84,7 +90,12 @@ public class EditUserTest extends BaseTest {
     public void editUserWithNullFields() {
         dynamicUser_ = new NewUsersModel(null, null, null, null);
         response = editUser(dynamicUser_, id_);
-        response.then().statusCode(SC_BAD_REQUEST).body("nome", equalTo("nome deve ser uma string")).body("email", equalTo("email deve ser uma string")).body("password", equalTo("password deve ser uma string")).body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
+        response.then()
+                .statusCode(SC_BAD_REQUEST)
+                .body("nome", equalTo("nome deve ser uma string"))
+                .body("email", equalTo("email deve ser uma string"))
+                .body("password", equalTo("password deve ser uma string"))
+                .body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
     }
 
     @Test
@@ -93,7 +104,8 @@ public class EditUserTest extends BaseTest {
     @DisplayName("Cenario 05: Deve validar o contrato de resposta ao editar usuário com sucesso")
     public void validateEditUserContract() {
         response = editUser(dynamicUser_, id_);
-        response.then().statusCode(SC_OK).body(matchesJsonSchemaInClasspath("contracts/editUserSchema.json"));
+        response.then()
+                .statusCode(SC_OK)
+                .body(matchesJsonSchemaInClasspath("contracts/editUserSchema.json"));
     }
-
 }

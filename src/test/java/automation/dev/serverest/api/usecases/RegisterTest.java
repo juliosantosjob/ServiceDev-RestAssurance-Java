@@ -58,7 +58,11 @@ public class RegisterTest extends BaseTest {
     public void registrationSuccessful() {
         dynamicUser_ = getRandomUser();
         response = registerUser(dynamicUser_);
-        response.then().statusCode(SC_CREATED).body(is(notNullValue())).body("message", equalTo("Cadastro realizado com sucesso")).body("_id", is(notNullValue()));
+        response.then()
+                .statusCode(SC_CREATED)
+                .body(is(notNullValue()))
+                .body("_id", is(notNullValue()))
+                .body("message", equalTo("Cadastro realizado com sucesso"));
 
 
         // To delete user after test to not dirty the database
@@ -73,7 +77,10 @@ public class RegisterTest extends BaseTest {
     public void registrationWithInvalidEmail() {
         dynamicUser_.setEmail("invalid_email");
         response = registerUser(dynamicUser_);
-        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("email", equalTo("email deve ser um email válido"));
+        response.then()
+                .statusCode(SC_BAD_REQUEST)
+                .body(is(notNullValue()))
+                .body("email", equalTo("email deve ser um email válido"));
     }
 
     @Test
@@ -83,7 +90,10 @@ public class RegisterTest extends BaseTest {
     public void registrationWithEmptyName() {
         dynamicUser_.setNome("");
         response = registerUser(dynamicUser_);
-        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("nome", equalTo("nome não pode ficar em branco"));
+        response.then()
+                .statusCode(SC_BAD_REQUEST)
+                .body(is(notNullValue()))
+                .body("nome", equalTo("nome não pode ficar em branco"));
     }
 
     @Test
@@ -93,7 +103,10 @@ public class RegisterTest extends BaseTest {
     public void registrationWithEmptyEmail() {
         dynamicUser_.setEmail("");
         response = registerUser(dynamicUser_);
-        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("email", equalTo("email não pode ficar em branco"));
+        response.then()
+                .statusCode(SC_BAD_REQUEST)
+                .body(is(notNullValue()))
+                .body("email", equalTo("email não pode ficar em branco"));
     }
 
     @Test
@@ -103,7 +116,10 @@ public class RegisterTest extends BaseTest {
     public void registrationWithEmptyPassword() {
         dynamicUser_.setPassword("");
         response = registerUser(dynamicUser_);
-        response.then().statusCode(SC_BAD_REQUEST).body(is(notNullValue())).body("password", equalTo("password não pode ficar em branco"));
+        response.then()
+                .statusCode(SC_BAD_REQUEST)
+                .body(is(notNullValue()))
+                .body("password", equalTo("password não pode ficar em branco"));
     }
 
     @Test
@@ -113,7 +129,9 @@ public class RegisterTest extends BaseTest {
     public void validateRegistrationSuccessContract() {
         dynamicUser_ = getRandomUser();
         response = registerUser(dynamicUser_);
-        response.then().statusCode(SC_CREATED).body(matchesJsonSchemaInClasspath("contracts/registerSuccessSchema.json"));
+        response.then()
+                .statusCode(SC_CREATED)
+                .body(matchesJsonSchemaInClasspath("contracts/registerSuccessSchema.json"));
 
         String idUser = response.jsonPath().getString("id");
         deleteUserById(idUser);
