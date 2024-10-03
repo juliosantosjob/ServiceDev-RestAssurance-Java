@@ -1,0 +1,16 @@
+Status Code: 200
+Headers: access-control-allow-origin=*
+x-dns-prefetch-control=off
+x-frame-options=SAMEORIGIN
+strict-transport-security=max-age=15552000; includeSubDomains
+x-download-options=noopen
+x-content-type-options=nosniff
+x-xss-protection=1; mode=block
+content-type=application/json; charset=utf-8
+X-Cloud-Trace-Context=b6f3feca3af63b3725b0d9c2f0368e65
+Date=Thu, 03 Oct 2024 20:22:38 GMT
+Server=Google Frontend
+Content-Length=50
+Body: {
+    "message": "Registro alterado com sucesso"
+}
