@@ -2,7 +2,6 @@ package automation.dev.serverest.api.usecases;
 
 import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;
-import io.restassured.path.json.JsonPath;
 
 import io.restassured.response.Response;
 import org.junit.jupiter.api.MethodOrderer;
@@ -38,7 +37,6 @@ import static org.hamcrest.Matchers.notNullValue;
 public class RegisterTest extends BaseTest {
     private NewUsersModel dynamicUser_;
     private Response response;
-    private JsonPath responseJson;
     private String id_;
 
     @BeforeEach
