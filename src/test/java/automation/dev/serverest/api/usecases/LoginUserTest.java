@@ -185,6 +185,6 @@ public class LoginUserTest extends BaseTest {
         response = loginUser(credentials);
         response.then()
                 .statusCode(SC_OK)
-                .body(matchesJsonSchemaInClasspath("contracts/loginSuccessSchema.json")); // Ajuste o caminho conforme necessário
+                .body(matchesJsonSchemaInClasspath("contracts/loginSuccessSchema.json"));
     }
 }
