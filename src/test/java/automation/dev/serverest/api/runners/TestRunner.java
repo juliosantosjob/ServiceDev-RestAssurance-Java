@@ -1,9 +1,9 @@
 package automation.dev.serverest.api.runners;
 
-import automation.dev.serverest.api.usecases.EditUserTest;
-import automation.dev.serverest.api.usecases.GetUserTest;
-import automation.dev.serverest.api.usecases.LoginUserTest;
-import automation.dev.serverest.api.usecases.RegisterTest;
+import automation.dev.serverest.api.tests.EditUserTest;
+import automation.dev.serverest.api.tests.GetUserTest;
+import automation.dev.serverest.api.tests.LoginUserTest;
+import automation.dev.serverest.api.tests.RegisterTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.platform.suite.api.IncludeTags;
 import org.junit.platform.suite.api.SelectClasses;

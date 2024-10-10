@@ -1,4 +1,4 @@
-package automation.dev.serverest.api.usecases;
+package automation.dev.serverest.api.tests;
 
 import automation.dev.serverest.api.base.BaseTest;
 import automation.dev.serverest.api.models.NewUsersModel;

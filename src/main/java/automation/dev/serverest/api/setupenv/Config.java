@@ -10,7 +10,7 @@ public class Config {
     static {
         try (InputStream input = Config.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
-                throw new RuntimeException("config.properties file not found in the classpath");
+                throw new RuntimeException("***** Could not find file \"config.properties\" in classpath. Make sure it exists. *****");
             }
             properties.load(input);
         } catch (IOException ex) {
