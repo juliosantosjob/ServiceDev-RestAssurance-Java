@@ -27,7 +27,7 @@ jobs:
         if: always()
         env:
           DEV_URL: ${{ secrets.DEV_URL }}
-          HOM_URL: ${{ secrets.HOM_URL_ENV }}
+          HOM_URL: ${{ secrets.HOM_URL }}
         run: mvn clean test
 
       - name: Get Allure History
