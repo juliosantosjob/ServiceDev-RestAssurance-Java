@@ -7,7 +7,7 @@ public class Environment {
 
     public static String getBaseUrl() {
       try {
-          baseUrl = (HOM_URL == null) ? HOM_URL : HOM_URL_ENV;
+          baseUrl = (HOM_URL == null) ? HOM_URL_ENV : HOM_URL;
       } catch (Exception e) {
           throw new RuntimeException("Failed to get base URL: " +e);
       }
