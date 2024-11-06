@@ -3,7 +3,7 @@
 Este projeto contém testes automatizados para a API ServeRest usando Java e JUnit 5. Os testes cobrem cenários de registro de usuários, incluindo casos de sucesso e falha.
 
 ## Estrutura do Projeto
-
+ 
 - **src/main**: Contém configurações de variaveis de ambiente utilizando o .properties
 - **src/test**: Contém as classes de teste para registro de usuários e outras funcionalidades da API.
 
