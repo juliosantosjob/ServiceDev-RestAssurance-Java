@@ -1,0 +1,207 @@
+Status Code: 200
+Headers: access-control-allow-origin=*
+x-dns-prefetch-control=off
+x-frame-options=SAMEORIGIN
+strict-transport-security=max-age=15552000; includeSubDomains
+x-download-options=noopen
+x-content-type-options=nosniff
+x-xss-protection=1; mode=block
+content-type=application/json; charset=utf-8
+X-Cloud-Trace-Context=38b1fedfe3ac308f6eb70c7165035196
+Date=Thu, 12 Dec 2024 12:19:30 GMT
+Server=Google Frontend
+Content-Length=6027
+Body: {
+    "quantidade": 27,
+    "usuarios": [
+        {
+            "nome": "Fulano da Silva",
+            "email": "fulano@qa.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "0uxuPY0cbmQhpEz1"
+        },
+        {
+            "nome": "Nena",
+            "email": "fae.ledner@hotmail.com",
+            "password": "o7u8ev0gcc",
+            "administrador": "true",
+            "_id": "9MrxwXhdu9lmoQ2S"
+        },
+        {
+            "nome": "Marc Volkman",
+            "email": "marcvolkman@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "AAoAJC67udUeVNri"
+        },
+        {
+            "nome": "Rebeca Moreira",
+            "email": "MariaJulia_Xavier50@bol.com.br",
+            "password": "Zd1nBp8UqyS_j1x",
+            "administrador": "true",
+            "_id": "AbHwR3kqzmoZoOtL"
+        },
+        {
+            "nome": "Leonardo Batista",
+            "email": "Lara66@bol.com.br",
+            "password": "fqd3T8AHwjXhvdg",
+            "administrador": "false",
+            "_id": "DtgkHwOREoBKEwTZ"
+        },
+        {
+            "nome": "user4",
+            "email": "email4@email.com",
+            "password": "minhasenha4",
+            "administrador": "true",
+            "_id": "EO6emuGFMtximw2V"
+        },
+        {
+            "nome": "Dr. Asafe Novais",
+            "email": "cnunes@example.net",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "EmPZhtmkIozw00v0"
+        },
+        {
+            "nome": "Oliva",
+            "email": "mohammed.jakubowski@yahoo.com",
+            "password": "vdq5upqh",
+            "administrador": "true",
+            "_id": "IgKnzCRyUa9Gnk9B"
+        },
+        {
+            "nome": "Washington Barros Filho",
+            "email": "JulioCesar.Carvalho@yahoo.com",
+            "password": "HX7BA6AJn8ZKy6e",
+            "administrador": "false",
+            "_id": "JXM8Yi1oC8agtcCc"
+        },
+        {
+            "password": "12345",
+            "administrador": "true",
+            "nome": "Novo Nome",
+            "email": "iexypjahbh166@yahoo.com",
+            "_id": "MXPx30CIbq6On41O"
+        },
+        {
+            "nome": "Roberta Batista",
+            "email": "Antonella.Oliveira@hotmail.com",
+            "password": "qOaR8pDr_d2WjqE",
+            "administrador": "false",
+            "_id": "N9CAxCW8W4oOzsOE"
+        },
+        {
+            "nome": "Edward.Bayer87",
+            "email": "Justen_Wilkinson@gmail.com",
+            "password": "103671845",
+            "administrador": "true",
+            "_id": "NDumxAqjinMZtXWb"
+        },
+        {
+            "nome": "Priscilla Roberts",
+            "email": "priscillaroberts@test.com",
+            "password": "Test;123",
+            "administrador": "false",
+            "_id": "Ny5q7yLzQoY8gruF"
+        },
+        {
+            "nome": "Pam Nikolaus",
+            "email": "pamnikolaus@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "PaqAVcYWfV1RBhUn"
+        },
+        {
+            "nome": "Usu�rio de Teste",
+            "email": "casa-grandeisaque@example.com",
+            "password": " ^2PO(4mzfc",
+            "administrador": "true",
+            "_id": "Q1ooRQRtxmiSHgmw"
+        },
+        {
+            "nome": "Guillermo O'Reilly DDS",
+            "email": "elizabethryan@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "UxUgAGwLqiCym8nI"
+        },
+        {
+            "nome": "Nicole Murphy",
+            "email": "nicolemurphy@test.com",
+            "password": "Test;123",
+            "administrador": "false",
+            "_id": "cvNxUZoSkndtThQF"
+        },
+        {
+            "nome": "Jonathan McDermott",
+            "email": "jonathanmcdermott@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "fihOv6R0yoUHFI7b"
+        },
+        {
+            "password": "12345",
+            "administrador": "true",
+            "nome": "Diego Patricio",
+            "email": "okjzsixqia825@hotmail.com",
+            "_id": "kI5BNdW1DfMVm7KA"
+        },
+        {
+            "nome": "Mariana Melo",
+            "email": "Eloa.Moreira@live.com",
+            "password": "c3fMUFDyPWg3GE7",
+            "administrador": "false",
+            "_id": "mgFunV2uWk4AGL7n"
+        },
+        {
+            "nome": "Pablo Xavier",
+            "email": "Tertuliano_Oliveira@bol.com.br",
+            "password": "mET5dg2jKPpFlr6",
+            "administrador": "false",
+            "_id": "r1sg3G2wovzprMED"
+        },
+        {
+            "nome": "Joaquim Barros",
+            "email": "Karla.Oliveira@hotmail.com",
+            "password": "FO7_MyeUMOHS1ab",
+            "administrador": "true",
+            "_id": "rHO7uLeaFkX0iRou"
+        },
+        {
+            "nome": "Alyssa Streich",
+            "email": "alyssastreich@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "tFv8Cs8pfX4lf8om"
+        },
+        {
+            "nome": "Roberto Reis",
+            "email": "Maria.Albuquerque1@gmail.com",
+            "password": "b59h4TA5uSzBkiO",
+            "administrador": "true",
+            "_id": "unwpgdqPlBJSRtpY"
+        },
+        {
+            "password": "12345",
+            "administrador": "true",
+            "nome": "Diego Patricio",
+            "email": "cnubkgiqqt241@yahoo.com",
+            "_id": "xATnOuIsPpRW5fVL"
+        },
+        {
+            "nome": "Antonella Albuquerque Neto",
+            "email": "Emanuelly7@bol.com.br",
+            "password": "Kv0pMu84uZIndM_",
+            "administrador": "true",
+            "_id": "xMAKVbitw1rbs2uw"
+        },
+        {
+            "nome": "Sr. Carlos Souza",
+            "email": "Lorena.Saraiva58@gmail.com",
+            "password": "PYYPAX2dQ7V1jyY",
+            "administrador": "true",
+            "_id": "yBvxJkKFujH8AhI4"
+        }
+    ]
+}
