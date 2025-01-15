@@ -1,0 +1,389 @@
+Status Code: 200
+Headers: access-control-allow-origin=*
+x-dns-prefetch-control=off
+x-frame-options=SAMEORIGIN
+strict-transport-security=max-age=15552000; includeSubDomains
+x-download-options=noopen
+x-content-type-options=nosniff
+x-xss-protection=1; mode=block
+content-type=application/json; charset=utf-8
+X-Cloud-Trace-Context=a2b0cb42f83bc9dac4d413222440789f
+Date=Wed, 15 Jan 2025 12:17:15 GMT
+Server=Google Frontend
+Content-Length=11463
+Body: {
+    "quantidade": 53,
+    "usuarios": [
+        {
+            "nome": "Fulano da Silva",
+            "email": "ygoh@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "0NCVLMEcwlTOWaYe"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "fulano@qa.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "0uxuPY0cbmQhpEz1"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736921801259@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "0w5UE6eKBmXCrLJA"
+        },
+        {
+            "nome": "Bem Vindo Admin Teste",
+            "email": "usuarioAdmin@gmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "3TAlVvFigXmoyF2Z"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "nojs@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "7THXtZuP4KwA4T4S"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "kteu@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "8Cd1ilg0x1bA412w"
+        },
+        {
+            "nome": "Nils45",
+            "email": "Camila_Pagac90@yahoo.com",
+            "password": "901460090",
+            "administrador": "true",
+            "_id": "9ERZvAKj4CPTstEN"
+        },
+        {
+            "nome": "Levi Swaniawski",
+            "email": "leviswaniawski@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "9NQ9mb4nEfiwObXG"
+        },
+        {
+            "nome": "nome cliente",
+            "email": "email@qa.com.br",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "9PfWWRBBsx0v7FQJ"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736932365632@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "9jQmI1QAiTADjqfw"
+        },
+        {
+            "nome": "Mrs. Barry Oberbrunner",
+            "email": "jimmoen@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "9ybmjWgtVdeFgeai"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "beltrano546@qa.com.br",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "Cq7k7zvGrSToOauB"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "beltrano@qa.com.br",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "DDlMiPBDkfLwt0nZ"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "bhey@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "GZPYlsS9ixMacCxD"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "tnbq@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "HXE6Xjwo6PkVBc0n"
+        },
+        {
+            "nome": "Jazlyn",
+            "email": "Adolf35@gmail.com",
+            "password": "W7R9DI1uLCU3lRz",
+            "administrador": "false",
+            "_id": "Hk07jSKWG4KScMaI"
+        },
+        {
+            "nome": "Charles Rempel",
+            "email": "Trever.Turcotte@hotmail.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "IdwS8kyBgJq9UXxh"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "onmc@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "Ip8oelFzPrbwjq4o"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "udzg@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "KQml9ukcb48mlulg"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "erau@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "Liz1GhzjzQ7zjnyd"
+        },
+        {
+            "nome": "Usuario Nao Admin",
+            "email": "usuarioNaoAdmin@gmail.com",
+            "password": "123456",
+            "administrador": "false",
+            "_id": "NpjDYB68rRlWATEm"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736921801615@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "Rj2UX6Nt9si37Wuu"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "ftet@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "SrWhgy6Ry3ByyKBM"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736921801444@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "TtjdcD6tqiFMGWww"
+        },
+        {
+            "nome": "Angie Haag",
+            "email": "angiehaag@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "V9f5v8XMz7tjzhlC"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "nurh@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "VBmmxwAeScwqoBvj"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "wxds@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "VlAQn7QE4b2fJlkG"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "nqzv@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "W7cN5eQf5z2VOgfw"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "jack@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "WKw3ZVOMzYD5ojYk"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736921801788@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "ZHMNX4WsuOmqycSe"
+        },
+        {
+            "nome": "Sadie Goldner V",
+            "email": "sadiegoldnerv@test.com",
+            "password": "Test;123",
+            "administrador": "false",
+            "_id": "ZXIJJuy9zZ7hi4Nn"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736932365071@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "aN5F2NFB8ezaNYC2"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "ejeg@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "blpK9X3GGFKD7vKq"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "ajqc@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "bvtc9trIKdz2Sl1h"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736932367739@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "bwVi7SurCj9lGWJf"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "sqju@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "cJC0JuBUS7BYeMzH"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "kzbg@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "d0FOmF66SUtOO36o"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "kbcb@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "dZK745K6WVLEWdLm"
+        },
+        {
+            "nome": "Geo",
+            "email": "Antonette.Crist97@gmail.com",
+            "password": "Ne55sL31shUVBnJ",
+            "administrador": "false",
+            "_id": "duFgotpvDZr4M67V"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "hbse@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "e8oT3IBNSkrEJW63"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "vbot@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "fwlBmfP6AJCxK8ZL"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736921803615@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "grrsc3dOHd4FWKgh"
+        },
+        {
+            "nome": "Wayne Effertz",
+            "email": "wayneeffertz@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "hl6PlZujIfxnuhUe"
+        },
+        {
+            "nome": "Carmela",
+            "email": "Darion_Kihn@hotmail.com",
+            "password": "lQQ3D7xP9NHfn_2",
+            "administrador": "true",
+            "_id": "kjVFBIxlR1PHP00h"
+        },
+        {
+            "nome": "Lisa",
+            "email": "adan.mcglynn@hotmail.com",
+            "password": "0zrsgj13tvx",
+            "administrador": "true",
+            "_id": "n48cpa5H7oihYvI4"
+        },
+        {
+            "nome": "Johnna",
+            "email": "charisse.robel@gmail.com",
+            "password": "l2o4mjbtyc9paa",
+            "administrador": "true",
+            "_id": "npxEbs4d09xnuQTQ"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736932365358@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "p24ArerFuqGo1YFk"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "ipjq@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "rJI9nQbZroUF9tQt"
+        },
+        {
+            "nome": "Laurence Mayert",
+            "email": "laurencemayert@test.com",
+            "password": "Test;123",
+            "administrador": "false",
+            "_id": "uKSdvzfefOO2nXFT"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "egip@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "wBdxCrYkHh5yXelY"
+        },
+        {
+            "nome": "Fulano da Silva",
+            "email": "rqlf@testmail.com",
+            "password": "123456",
+            "administrador": "true",
+            "_id": "wzXdSeAt5i8JXuuf"
+        },
+        {
+            "nome": "Ms. Rufus Treutel",
+            "email": "ms.rufustreutel@test.com",
+            "password": "Test;123",
+            "administrador": "true",
+            "_id": "wzmHljWW5L3Ckiuu"
+        },
+        {
+            "nome": "João Silva",
+            "email": "joao.silva1736932365886@teste.com",
+            "password": "senha123",
+            "administrador": "true",
+            "_id": "xYsLipqQgPnda8gi"
+        }
+    ]
+}
